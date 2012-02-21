@@ -2,8 +2,8 @@
 
 import json
 from mod.course_related import MyCourse, CourseSchedule
-from const.constants import  ABBR_DAYS_TO_DAYS, CONSOLE_ENCODING
-from config import SkipOptionalFields
+from const.constants import  ABBR_DAYS_TO_DAYS
+from config import SkipOptionalFields, ConsoleEncoding, FileEncoding
 from const.dict_keys import *
 from mod.fuf import info
 
@@ -21,7 +21,7 @@ def serializeCourses(courses, path='serialized_courses.txt'):
         coursesDicts.append(d)
 
     with open(path, 'w') as f:
-        print >> f, json.dumps(coursesDicts, ensure_ascii=False).encode('utf-8')
+        print >> f, json.dumps(coursesDicts, ensure_ascii=False).encode(FileEncoding)
 
 
 def deserializeMyCourses(path='serialized_courses.txt'):
@@ -46,7 +46,7 @@ def deserializeMyCourses(path='serialized_courses.txt'):
 
 def createCustomCourse():
     def _promptInput(fieldName, necessary=True):
-        return unicode(raw_input('%s field(%s)? ' % ('necessary' if necessary else 'optional', fieldName)), CONSOLE_ENCODING)
+        return unicode(raw_input('%s field(%s)? ' % ('necessary' if necessary else 'optional', fieldName)), ConsoleEncoding)
 
     schedulePattern = u'{0}-{1}周,每{2}周;{3}-{4}节,{5}区,{6}'
     scheduleExample = u'周一 1-15周,每1周;3-5节,3区,附1-302 => mon 1 15 1 3 5 3 附1-302'
@@ -89,7 +89,7 @@ def createCustomCourse():
 
     info('info', 'schedules example %s\nenter q to end schedules inputting\navailable weekdays are mon, tue, wed, thu, fri, sat, sun' % scheduleExample)
     while True:
-        input = unicode(raw_input('schedule? '), CONSOLE_ENCODING)
+        input = unicode(raw_input('schedule? '), ConsoleEncoding)
 
         if input == 'q':
             break

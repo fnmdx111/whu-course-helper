@@ -7,27 +7,19 @@ email = u'chsc4698@gmail.com'
 department = u'school of computer, whu'
 
 
-VERSION = u'0.0.4a'
+VERSION = u'0.0.5a'
 
 switch = {
     'info': True,
-    'dbg': True,
+    'dbg': False,
     'err': True,
 }
-
-
 
 
 PASSWORD_PROMPT = 'pwd? '
 ID_PROMPT = 'id? '
 GMAIL_PROMPT = 'gmail? '
 
-
-
-
-# note that if you are using linux or any other modern ide which supports unicode,
-# please set the following variable to 'utf-8'
-CONSOLE_ENCODING = 'utf-8' if switch['dbg'] else 'gbk'
 
 ORIGINAL_HOST = '202.114.74.199'
 MAIN_PAGE_URL = r'http://%s' % ORIGINAL_HOST

@@ -8,8 +8,8 @@ from mod.fuf import info
 from mod.header_holder import HeaderHolder
 from mod.parsers import myCoursesParser
 from mod.spiders import getCaptchaPic, grabCoursePages
-from const.constants import  CONSOLE_ENCODING
 from mod.serialize import deserializeMyCourses
+from config import ConsoleEncoding
 
 
 def login(studentID, password, captcha, header,
@@ -85,7 +85,7 @@ def loadCoursesFromWeb(studentID, password):
 
     studentName, date, semester = login(studentID, password, captchaContent, header)
     if studentName:
-        info('info', ('welcome, ' + u'%s %s %s' % (studentName, date, semester)).encode(CONSOLE_ENCODING))
+        info('info', ('welcome, ' + u'%s %s %s' % (studentName, date, semester)).encode(ConsoleEncoding))
     else:
         info('info', 'strange, nothing was transmitted, perhaps wrong password or captcha?')
 
@@ -102,7 +102,7 @@ def readCourses(studentID, password, path=config.SerializedCoursesPath, LoadCour
         courses += deserializeMyCourses(path)
 
     for item in courses:
-        print item.__unicode__().encode(CONSOLE_ENCODING)
+        print item.__unicode__().encode(ConsoleEncoding)
 
     return studentName, courses
 

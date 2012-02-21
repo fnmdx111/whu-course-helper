@@ -17,6 +17,9 @@ you may obtain a copy of the license at http://www.gnu.org/copyleft/lesser.html
 
 Changelog:
 
+    2012/2/21T10:34 0.0.5a 1.changed repo to whu-course-helper for various reasons
+                           2.automatic select console encoding
+
     2012/2/20T22:19 0.0.5 courses are now serializable, and of course deserializable
 
     2012/2/19T11:22 0.0.4a major bug fix - starting week now taken into consideration

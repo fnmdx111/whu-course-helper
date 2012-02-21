@@ -1,16 +1,18 @@
 # encoding: utf-8
+
+import sys
 from mod.fuf import info
 
-STUDENT_ID = ''
-STUDENT_PWD = ''
+StudentID = ''
+StudentPwd = ''
 
-GMAIL_ACCOUNT = ''
-GMAIL_PWD = ''
+GMailAccount = ''
+GMail_Pwd = ''
 
 
-THIS_CALENDAR_TITLE = u'武大课表'
-THIS_CALENDAR_COLOR = u'#2952A3'
-THIS_CALENDAR_SUMMARY = u'created by WhuCoursesHelper'
+ThisCalendarTitle = u'武大课表'
+ThisCalendarColor = u'#2952A3'
+ThisCalendarSummary = u'created by WhuCoursesHelper'
 
 OnThisCalendarFoundPerformDelete = True
 DetectAlreadyInsertedCourse = False # not implemented
@@ -35,11 +37,19 @@ def fromFile(path='config'):
 
 
 GLOBALS = {
-    'STUDENT_ID': u'',
-    'STUDENT_PWD': u'',
-    'GMAIL_ACCOUNT': u'',
-    'GMAIL_PWD': u'',
-    'THIS_CALENDAR_TITLE': u'',
-    'THIS_CALENDAR_COLOR': u'',
-    'THIS_CALENDAR_SUMMARY': u''
+    'StudentID': u'',
+    'StudentPwd': u'',
+    'GMailAccount': u'',
+    'GMail_Pwd': u'',
+    'ThisCalendarTitle': u'',
+    'ThisCalendarColor': u'',
+    'ThisCalendarSummary': u''
 }
+
+# note that if you are using linux or any other modern ide which supports unicode,
+# please set the following variable to 'utf-8'
+# warning: don't modify this if you don't know what you're doing!
+ConsoleEncoding = sys.stdout.encoding
+
+# warning: don't modify this if you don't know what you're doing!
+FileEncoding = 'utf-8'

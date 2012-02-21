@@ -30,14 +30,14 @@ class GoogleCalendarAdapter(object):
             self.calendarClient.ClientLogin(gmail_account, gmail_pwd, self.calendarClient.source)
 
             for calendar in self.calendarClient.GetOwnCalendarsFeed().entry:
-                if calendar.summary and calendar.summary.text == THIS_CALENDAR_SUMMARY:
+                if calendar.summary and calendar.summary.text == ThisCalendarSummary:
                     if OnThisCalendarFoundPerformDelete:
                         info('info', 'previously created calendar %s found, deleting' % calendar.title.text)
                         self.calendarClient.Delete(calendar.GetEditLink().href)
                         self.currentCalendar = self.calendarClient.InsertCalendar(new_calendar=self.genNewCalendar(
-                            THIS_CALENDAR_TITLE,
-                            THIS_CALENDAR_SUMMARY,
-                            THIS_CALENDAR_COLOR,
+                            ThisCalendarTitle,
+                            ThisCalendarSummary,
+                            ThisCalendarColor,
                             THIS_CALENDAR_TIMEZONE,
                             THIS_CALENDAR_LOCATION
                         ))
@@ -46,9 +46,9 @@ class GoogleCalendarAdapter(object):
                     break
             else:
                 self.currentCalendar = self.calendarClient.InsertCalendar(new_calendar=self.genNewCalendar(
-                    THIS_CALENDAR_TITLE,
-                    THIS_CALENDAR_SUMMARY,
-                    THIS_CALENDAR_COLOR,
+                    ThisCalendarTitle,
+                    ThisCalendarSummary,
+                    ThisCalendarColor,
                     THIS_CALENDAR_TIMEZONE,
                     THIS_CALENDAR_LOCATION
                 ))
@@ -175,9 +175,9 @@ class CourseRecurrence(object):
 
 
 def syncToGoogleCalendar():
-    _, courses = whu.readCourses(getAccountInfo(STUDENT_ID, ID_PROMPT), getAccountInfo(STUDENT_PWD, PASSWORD_PROMPT, True))
+    _, courses = whu.readCourses(getAccountInfo(StudentID, ID_PROMPT), getAccountInfo(StudentPwd, PASSWORD_PROMPT, True))
 
-    adapter = GoogleCalendarAdapter(getAccountInfo(GMAIL_ACCOUNT, GMAIL_PROMPT), getAccountInfo(GMAIL_PWD, PASSWORD_PROMPT, True))
+    adapter = GoogleCalendarAdapter(getAccountInfo(GMailAccount, GMAIL_PROMPT), getAccountInfo(GMail_Pwd, PASSWORD_PROMPT, True))
 
     for item in courses:
         adapter.insertCourse(

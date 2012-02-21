@@ -228,8 +228,8 @@ def genTimetable(studentID, password):
 
 if __name__ == '__main__':
     try:
-        studentID = getAccountInfo(config.STUDENT_ID, ID_PROMPT)
-        password = getAccountInfo(config.STUDENT_PWD, PASSWORD_PROMPT, True)
+        studentID = getAccountInfo(config.StudentID, ID_PROMPT)
+        password = getAccountInfo(config.StudentPwd, PASSWORD_PROMPT, True)
 
         if genTimetable(studentID, password):
             info('info', 'task has been done successfully')
