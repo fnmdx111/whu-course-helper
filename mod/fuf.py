@@ -5,6 +5,7 @@
 """
 import getpass
 from const.constants import switch
+from const.dict_keys import CLASSROOM, BUILDING
 
 
 def info(channel, msg):
@@ -23,3 +24,12 @@ def getAccountInfo(variable, prompt, usePwdMode=False):
             return raw_input(prompt)
 
     return variable
+
+
+def genLocationByCourseSchedule(schedule):
+    classroomAndBuilding = schedule[BUILDING]
+    if schedule[BUILDING] != schedule[CLASSROOM]:
+        classroomAndBuilding += u'-%s' % schedule[CLASSROOM]
+
+    return classroomAndBuilding
+

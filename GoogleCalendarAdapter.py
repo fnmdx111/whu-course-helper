@@ -10,13 +10,12 @@ import atom
 import datetime
 
 import gdata
-import TableCreator
 from const.constants import *
 from config import *
 import gdata.calendar
 import gdata.calendar.client
 from mod import whu
-from mod.fuf import getAccountInfo
+from mod.fuf import getAccountInfo, genLocationByCourseSchedule
 
 
 class GoogleCalendarAdapter(object):
@@ -78,7 +77,7 @@ class GoogleCalendarAdapter(object):
             event.content = atom.data.Content(text=content)
             event.where.append(gdata.data.Where(value=u'%s区, %s' % (
                                                     schedule[DISTRICT],
-                                                    TableCreator.genLocationByCourseSchedule(schedule)
+                                                    genLocationByCourseSchedule(schedule)
                                                 )))
 
             event.recurrence = gdata.data.Recurrence(text=CourseRecurrence(schedule).recurrenceData)

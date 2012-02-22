@@ -5,7 +5,7 @@ from const.constants import   PASSWORD_PROMPT, ID_PROMPT, DAYS_TO_NUMS
 
 from const.dict_keys import *
 from BeautifulSoup import BeautifulSoup
-from mod.fuf import info, getAccountInfo
+from mod.fuf import info, getAccountInfo, genLocationByCourseSchedule
 from mod import whu
 
 
@@ -140,14 +140,6 @@ def genHTML(studentName):
     content = mainHtml.format(**htmlParams)
 
     return content
-
-
-def genLocationByCourseSchedule(schedule):
-    classroomAndBuilding = schedule[BUILDING]
-    if schedule[BUILDING] != schedule[CLASSROOM]:
-        classroomAndBuilding += u'-%s' % schedule[CLASSROOM]
-
-    return classroomAndBuilding
 
 
 def genCourseInfoInTableElem(course, currentSchedule, showClsNum=False):
