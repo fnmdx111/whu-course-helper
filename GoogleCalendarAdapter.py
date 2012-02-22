@@ -1,8 +1,7 @@
 # encoding: utf-8
 
 """
-At the mean time, im not able to manipulate which event belongs to which calender,
-so users might as well set up a new gmail account
+TODO make this file irrelevant to specific school
 """
 
 
