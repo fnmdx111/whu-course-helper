@@ -11,7 +11,7 @@ import datetime
 
 import gdata
 from const.constants import *
-from config import *
+from mod.config import *
 import gdata.calendar
 import gdata.calendar.client
 from mod import whu
@@ -29,14 +29,14 @@ class GoogleCalendarAdapter(object):
             self.calendarClient.ClientLogin(gmail_account, gmail_pwd, self.calendarClient.source)
 
             for calendar in self.calendarClient.GetOwnCalendarsFeed().entry:
-                if calendar.summary and calendar.summary.text == ThisCalendarSummary:
-                    if OnThisCalendarFoundPerformDelete:
+                if calendar.summary and calendar.summary.text == configs[CONFIG_KEY_THIS_CALENDAR_SUMMARY]:
+                    if configs[CONFIG_KEY_IF_THIS_CALENDAR_FOUND_THEN_PERFORM_DELETE]:
                         info('info', 'previously created calendar %s found, deleting' % calendar.title.text)
                         self.calendarClient.Delete(calendar.GetEditLink().href)
                         self.currentCalendar = self.calendarClient.InsertCalendar(new_calendar=self.genNewCalendar(
-                            ThisCalendarTitle,
-                            ThisCalendarSummary,
-                            ThisCalendarColor,
+                            configs[CONFIG_KEY_THIS_CALENDAR_TITLE],
+                            configs[CONFIG_KEY_THIS_CALENDAR_SUMMARY],
+                            configs[CONFIG_KEY_THIS_CALENDAR_COLOR],
                             THIS_CALENDAR_TIMEZONE,
                             THIS_CALENDAR_LOCATION
                         ))
@@ -44,10 +44,11 @@ class GoogleCalendarAdapter(object):
                         self.currentCalendar = calendar
                     break
             else:
+                print 'title:', configs[CONFIG_KEY_THIS_CALENDAR_TITLE]
                 self.currentCalendar = self.calendarClient.InsertCalendar(new_calendar=self.genNewCalendar(
-                    ThisCalendarTitle,
-                    ThisCalendarSummary,
-                    ThisCalendarColor,
+                    configs[CONFIG_KEY_THIS_CALENDAR_TITLE],
+                    configs[CONFIG_KEY_THIS_CALENDAR_SUMMARY],
+                    configs[CONFIG_KEY_THIS_CALENDAR_COLOR],
                     THIS_CALENDAR_TIMEZONE,
                     THIS_CALENDAR_LOCATION
                 ))
@@ -174,9 +175,9 @@ class CourseRecurrence(object):
 
 
 def syncToGoogleCalendar():
-    _, courses = whu.readCourses(getAccountInfo(StudentID, ID_PROMPT), getAccountInfo(StudentPwd, PASSWORD_PROMPT, True))
+    _, courses = whu.readCourses(getAccountInfo(configs[CONFIG_KEY_STUDENT_ID], ID_PROMPT), getAccountInfo(configs[CONFIG_KEY_STUDENT_PWD], PASSWORD_PROMPT, True))
 
-    adapter = GoogleCalendarAdapter(getAccountInfo(GMailAccount, GMAIL_PROMPT), getAccountInfo(GMail_Pwd, PASSWORD_PROMPT, True))
+    adapter = GoogleCalendarAdapter(getAccountInfo(configs[CONFIG_KEY_GMAIL_ACCOUNT], GMAIL_PROMPT), getAccountInfo(configs[CONFIG_KEY_GMAIL_PWD], PASSWORD_PROMPT, True))
 
     for item in courses:
         adapter.insertCourse(

@@ -1,15 +1,15 @@
+# encoding: utf-8
+
 from BeautifulSoup import BeautifulSoup
 import urllib
 import urllib2
-import config
 from const.constants import *
 from exceptions import InvalidIDOrPasswordError, WrongCaptchaError
-from mod.fuf import info
 from mod.header_holder import HeaderHolder
 from mod.parsers import myCoursesParser
 from mod.spiders import getCaptchaPic, grabCoursePages
 from mod.serialize import deserializeMyCourses
-from config import ConsoleEncoding
+from mod.config import *
 
 
 def login(studentID, password, captcha, header,
@@ -92,14 +92,23 @@ def loadCoursesFromWeb(studentID, password):
     return studentName, grabCoursePages(header, MY_COURSES_URL, parser=myCoursesParser)
 
 
-def readCourses(studentID, password, path=config.SerializedCoursesPath, LoadCoursesFromWeb=config.LoadCoursesFromWeb, LoadCoursesFromFile=config.LoadCoursesFromFile):
+def readCourses(studentID, password,
+                path=configs[CONFIG_KEY_SERIALIZED_COURSES_PATH],
+                LoadCoursesFromWeb=configs[CONFIG_KEY_LOAD_COURSES_FROM_WEB],
+                LoadCoursesFromFile=configs[CONFIG_KEY_LOAD_COURSES_FROM_FILE]):
     courses = []
     studentName = studentID
     if LoadCoursesFromWeb:
         studentName, coursesFromWeb = loadCoursesFromWeb(studentID, password)
         courses += coursesFromWeb
     if LoadCoursesFromFile:
-        courses += deserializeMyCourses(path)
+        try:
+            courses += deserializeMyCourses(path)
+        except IOError as err:
+            if err.errno == 2:
+                info('err', '%s not found, skipping loading courses from file' % configs[CONFIG_KEY_SERIALIZED_COURSES_PATH])
+                if configs[CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_EXIT]:
+                    exit(0)
 
     for item in courses:
         print item.__unicode__().encode(ConsoleEncoding)

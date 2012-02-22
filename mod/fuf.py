@@ -14,7 +14,7 @@ def info(channel, msg):
 
 
 def getAccountInfo(variable, prompt, usePwdMode=False):
-    if variable is None or variable == '':
+    if variable == u'':
         if usePwdMode:
             if switch['dbg']:
                 return raw_input(prompt)

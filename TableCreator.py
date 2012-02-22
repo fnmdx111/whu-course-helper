@@ -1,12 +1,12 @@
 # encoding: utf-8
-import config
 
 from const.constants import   PASSWORD_PROMPT, ID_PROMPT, DAYS_TO_NUMS
 
 from const.dict_keys import *
 from BeautifulSoup import BeautifulSoup
-from mod.fuf import info, getAccountInfo, genLocationByCourseSchedule
+from mod.fuf import getAccountInfo, genLocationByCourseSchedule
 from mod import whu
+from mod.config import *
 
 
 mainHtml = u'''
@@ -220,8 +220,8 @@ def genTimetable(studentID, password):
 
 if __name__ == '__main__':
     try:
-        studentID = getAccountInfo(config.StudentID, ID_PROMPT)
-        password = getAccountInfo(config.StudentPwd, PASSWORD_PROMPT, True)
+        studentID = getAccountInfo(configs[CONFIG_KEY_STUDENT_ID], ID_PROMPT)
+        password = getAccountInfo(configs[CONFIG_KEY_STUDENT_PWD], PASSWORD_PROMPT, True)
 
         if genTimetable(studentID, password):
             info('info', 'task has been done successfully')

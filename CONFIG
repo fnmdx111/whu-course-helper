@@ -1,0 +1,35 @@
+# This is a sample of file CONFIG
+# Note: lines starting with # are comments
+
+# if you specify the next 4 parameter,
+# you won't be bothered to enter them each time you run the app
+StudentID = ''
+StudentPwd = ''
+
+GMailAccount = ''
+GMailPwd = ''
+
+ThisCalendarTitle = u'武大课表'
+ThisCalendarColor = u'#2952A3'
+ThisCalendarSummary = u'created by WhuCoursesHelper'
+
+# if this parameter is True,
+# then when a calendar titled by ThisCalendarTitle is found,
+# this very calendar will be deleted,
+# and a new one with the preceding parameters
+IfThisCalendarFoundThenPerformDelete = True
+
+# if this parameter is True,
+# then optional fields will be skipped(thus the optional fields will all be set to 'n\a', the default value)
+# when creating custom courses
+SkipOptionalFields = True
+
+LoadCoursesFromWeb = True
+LoadCoursesFromFile = True
+
+# file path which specifies where custom courses will be saved after they are serialized
+SerializedCoursesPath = 'serialized_courses.txt'
+
+
+IfSerializedCoursesPathNotFoundThenPerformExit = False
+

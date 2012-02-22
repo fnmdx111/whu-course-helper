@@ -1,9 +1,9 @@
 # encoding: utf-8
 
 import json
+from mod.config import *
 from mod.course_related import MyCourse, CourseSchedule
 from const.constants import  ABBR_DAYS_TO_DAYS
-from config import SkipOptionalFields, ConsoleEncoding, FileEncoding
 from const.dict_keys import *
 from mod.fuf import info
 
@@ -79,7 +79,7 @@ def createCustomCourse():
                 courseDict[field] = input
                 break
 
-    if not SkipOptionalFields:
+    if not configs[CONFIG_KEY_SKIP_OPTIONAL_FIELDS]:
         for field in optionalFields:
             input = _promptInput(field, necessary=False)
             if input != '':
