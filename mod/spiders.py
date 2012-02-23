@@ -48,7 +48,7 @@ def grabAllPublicCoursePages(header):
         info('info', 'retrieving course data of page %s' % i)
         data = grabCoursePages(header, PUBLIC_COURSES_LIST_URL % (ORIGINAL_HOST, i), publicCoursesParser)
         for item in data:
-            print item
+            info('verbose', item)
             allPublicCourses.append(item)
     info('info', 'grabbing completed, %s courses caught' % len(allPublicCourses))
 

@@ -113,7 +113,7 @@ def readCourses(studentID, password,
                     exit(0)
 
     for item in courses:
-        print item.__unicode__().encode(ConsoleEncoding)
+        info('verbose', item.__unicode__().encode(ConsoleEncoding))
 
     return studentName, courses
 

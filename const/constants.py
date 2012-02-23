@@ -13,6 +13,7 @@ switch = {
     'info': True,
     'dbg': False,
     'err': True,
+    'verbose': True
 }
 
 
