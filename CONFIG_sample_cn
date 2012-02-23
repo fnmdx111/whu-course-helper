@@ -1,0 +1,40 @@
+# 该文件为CONFIG的样例
+# 注意：#开头的行都是注释
+
+# 如果你指定如下四个参数，那么每次运行程序的时候，你就不用输入
+# 学号密码和GMail的账号和密码了
+StudentID = ''
+StudentPwd = ''
+
+GMailAccount = ''
+GMailPwd = ''
+
+ThisCalendarTitle = u'武大课表'
+ThisCalendarColor = u'#2952A3'
+ThisCalendarSummary = u'created by whu-course-helper'
+
+# 如果以下参数被设置为True，
+# 那么当程序找到名为ThisCalendarTitle的日历时，会删除该日历
+IfThisCalendarFoundThenPerformDelete = True
+
+# 如果这个参数被设置为True,
+# 那么当创建自定义课程时，可选字段会被跳过（即所有可选字段会被设为默认值'n/a'）
+SkipOptionalFields = True
+
+LoadCoursesFromWeb = True
+LoadCoursesFromFile = True
+
+# 以下参数指定了序列化（存储）自定义课程文件的存储路径
+SerializedCoursesPath = 'serialized_courses.txt'
+
+# 以下两个参数是互斥的，如果存储序列化课程的文件没有找到，那么
+# 根据给定的参数，程序会退出或创建一个新的空txt文件
+IfSerializedCoursesPathNotFoundThenPerformExit = False
+IfSerializedCoursesPathNotFoundThenPerformCreate = True
+
+
+# 在CourseCustomizer.py中，如果FilterCourseBySth被设为真，
+# 当显示课程时，如果课程的Sth含有给定的关键字，那么它就会被显示出来
+FilterCourseByCourseName = True
+FilterCourseByTeacherName = True
+

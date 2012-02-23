@@ -1,3 +1,50 @@
+帮助使用whu选课网站的本地脚本
+
+目前版本支持导出你的课程，生成一个html的课表，并且可以同步到你的Google日历
+
+
+下一步目标有：
+    1.支持更多学校
+    2.弄一个简单的ui出来
+    3.打包为exe（前几天用pyinstaller试过，没有我以前打包另一个项目顺利，目前依然有错误）
+
+
+开发环境：win7，python2.6
+
+依赖的库有：
+    BeautifulSoup3.2 许可证为Simplified BSD License
+    gdata-2.0.16 许可证为Apache License 2.0
+
+本程序预计在GPL许可证下发布，你可以在http://www.gnu.org/copyleft/gpl.html找到一个该许可证的副本
+
+日志：
+
+    2012/2/22T23:26 0.0.7 1.你现在可以创建自定义课程了，
+                          2.现在有更多的设置选项了，具体请查看CONFIG_sample_cn
+
+    2012/2/22T18:00 0.0.6 现在可以通过config自定义一些程序行为了，请查看CONFIG_sample_cn
+
+    2012/2/21T10:34 0.0.5a 1.将repo移到了whu-course-helper
+                           2.自动选择命令行编码
+
+    2012/2/20T22:19 0.0.5 课程现在可以被序列化（保存在本地）了，当然也可以反序列化（从文件中读出）
+
+    2012/2/19T11:22 0.0.4a 主要的bug修正 - 之前搞忘了课程开始周这个参数了= =
+
+    2012/2/19T00:43 0.0.4 可以同步课表到Google日历了
+
+    2012/2/13 0.0.3 可以输出课表到html文件了
+
+    earlier 0.0.2 支持抓取课程了
+
+    earlier 0.0.1 在github上共享
+
+    earlier 0.0.0 创建了项目原型
+
+e-mail: chsc4698@gmail.com
+
+
+
 native script which may improve experience when using 202.114.74.199
 
 current version supports viewing public courses and courses of yourself
@@ -11,8 +58,8 @@ dependencies are
     gdata-2.0.16 Apache License 2.0
 
 
-This program is licensed under the Lesser General Public License,
-you may obtain a copy of the license at http://www.gnu.org/copyleft/lesser.html
+This program is licensed under the General Public License,
+you may obtain a copy of the license at http://www.gnu.org/copyleft/gpl.html
 
 
 Changelog:

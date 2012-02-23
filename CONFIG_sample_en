@@ -2,7 +2,7 @@
 # Note: lines starting with # are comments
 
 # if you specify the next 4 parameter,
-# you won't be bothered to enter them each time you run the app
+# you won't have to enter them each time you run the program
 StudentID = ''
 StudentPwd = ''
 

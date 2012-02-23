@@ -52,8 +52,8 @@ FileEncoding = 'utf-8'
 
 def readConfig():
     try:
-        info('info', 'trying to load CONFIG')
-        f = unicode(open('CONFIG', 'r').read(), FileEncoding)
+        info('info', 'trying to load CONFIG_sample_en')
+        f = unicode(open('CONFIG_sample_en', 'r').read(), FileEncoding)
 
         for line in f.split(u'\n'):
             if line.startswith(u'#'):
@@ -69,10 +69,10 @@ def readConfig():
 
     except IOError as err:
         if err.errno == 2:
-            info('info', 'CONFIG not found, using default config')
+            info('info', 'CONFIG_sample_en not found, using default config')
             return
         else:
-            info('err', 'error while loading CONFIG')
+            info('err', 'error while loading CONFIG_sample_en')
             return
 
 
