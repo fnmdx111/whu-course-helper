@@ -11,7 +11,7 @@ VERSION = u'0.0.5a'
 
 switch = {
     'info': True,
-    'dbg': True,
+    'dbg': False,
     'err': True,
 }
 
