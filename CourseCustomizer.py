@@ -2,6 +2,7 @@ from const import constants
 from const.dict_keys import COURSE_NAME, TEACHER_NAME
 from mod import whu
 from mod.config import *
+from mod.exceptions import InvalidIDOrPasswordError, WrongCaptchaError
 from mod.fuf import getAccountInfo
 from mod.serialize import deserializeMyCourses, createCustomCourse, serializeCourses
 
@@ -11,6 +12,7 @@ usage = """usage:
 \t(l)oad from another local txt file
 \t(s)ave changes
 \ts(h)ow courses
+\tcle(a)r courses
 \tse(r)ialize courses from web
 \tshow (u)sage
 \t(e)xit"""
@@ -27,7 +29,9 @@ def openTxt(path):
             elif configs[CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_CREATE]:
                 info('info', '%s not found, creating %s' % (path, path))
                 try:
-                    return open(path, 'w')
+                    f = open(path, 'w')
+                    f.close()
+                    return open(path, 'r')
                 except Exception as err:
                     info('err', 'error creating %s, program will now shutdown\ndetail: %s' % (path, err))
                     exit(0)
@@ -50,7 +54,16 @@ def init(path=configs[CONFIG_KEY_SERIALIZED_COURSES_PATH]):
         f.close()
 
 
-customCourses = init()
+def eliminateRepeatingCourses(l):
+    result = []
+    for item in l:
+        if item not in result:
+            result.append(item)
+
+    return result
+
+
+customCourses = eliminateRepeatingCourses(init())
 
 
 def createNewCourse():
@@ -61,9 +74,11 @@ def saveChanges(courses, path=configs[CONFIG_KEY_SERIALIZED_COURSES_PATH]):
     try:
         f = open(path, 'w')
         info('info', 'saving courses')
-        if serializeCourses(courses, f):
+        if serializeCourses(eliminateRepeatingCourses(courses), f):
             info('info', 'serialization succeeded')
             f.close()
+            if f.closed:
+                info('dbg', '%s closed' % path)
     except IOError as err:
         info('err', 'an error occurred while trying to write %s\n%s' % (path, err))
         return
@@ -74,30 +89,32 @@ def serializeCoursesFromWeb(studentID, studentPwd):
 
     _, courses = whu.readCourses(studentID, studentPwd, LoadCoursesFromFile=False)
 
+    newCourses = [course for course in courses if course not in customCourses]
+    info('info', '%s course(s) from web has been grabbed from your personal timetable, of which %s course(s) is new' % (len(courses), len(newCourses)))
+
     customCourses += courses
-    info('info', '%s course(s) from web has been grabbed from your personal timetable' % len(courses))
 
 
 def getInterestingCourses(keyword):
-    byCourseName = [course for course in customCourses if keyword in course.getProperty(COURSE_NAME)]
-    byTeacherName = [course for course in customCourses if keyword in course.getProperty(TEACHER_NAME)]
+    byCourseName = [(num, course) for num, course in enumerate(customCourses) if keyword in course.getProperty(COURSE_NAME)]
+    byTeacherName = [(num, course) for num, course in enumerate(customCourses) if keyword in course.getProperty(TEACHER_NAME)]
 
     result = []
     if configs[CONFIG_KEY_FILTER_COURSE_BY_COURSE_NAME]:
-        result += byCourseName
+        result = [item for item in byCourseName if item not in result]
     if configs[CONFIG_KEY_FILTER_COURSE_BY_TEACHER_NAME]:
-        result += byTeacherName
+        result += [item for item in byTeacherName if item not in result]
 
     return result
 
 
 def selectSpecificCourse(justShowing=False):
-    keyword = raw_input('keyword? ')
+    keyword = unicode(raw_input('keyword? '), ConsoleEncoding)
 
     interestedCourses = getInterestingCourses(keyword)
 
-    for i, course in enumerate(interestedCourses):
-        print (u'%s. %s' % (i, course)).encode(ConsoleEncoding)
+    for i, item in enumerate(interestedCourses):
+        print (u'%s. %s' % (i, item[1])).encode(ConsoleEncoding)
 
     if justShowing:
         return None
@@ -111,19 +128,26 @@ def selectSpecificCourse(justShowing=False):
         if raw not in range(0, len(interestedCourses)):
             info('err', 'invalid input, please input an integer in range 0 - %s' % (len(interestedCourses) - 1))
             continue
-        return raw
+        return interestedCourses[raw][0]
 
     return None
 
 
 def deleteCourse(num):
-    info('info', '%s by %s will be deleted' % (customCourses[num].getProperty(COURSE_NAME), customCourses[num].getProperty[TEACHER_NAME]))
+    info('info', '%s by %s will be deleted' % (customCourses[num].getProperty(COURSE_NAME), customCourses[num].getProperty(TEACHER_NAME)))
     con = raw_input('continue? (y/n)')
 
     if con == 'y':
         del customCourses[num]
     else:
         return
+
+
+def clearCourses():
+    global customCourses
+    customCourses = []
+
+    info('info', 'courses have been cleared')
 
 
 operations = {
@@ -134,6 +158,7 @@ operations = {
     'h': lambda: selectSpecificCourse(justShowing=True),
     'r': lambda: serializeCoursesFromWeb(getAccountInfo(configs[CONFIG_KEY_STUDENT_ID], constants.ID_PROMPT),
                                  getAccountInfo(configs[CONFIG_KEY_STUDENT_PWD], constants.PASSWORD_PROMPT, usePwdMode=True)),
+    'a': lambda: clearCourses(),
     'e': lambda: exit(0)
 }
 
@@ -149,7 +174,12 @@ def main():
             info('err', 'invalid input, please follow the usage')
             continue
         else:
-            operations[cmd]()
+            try:
+                operations[cmd]()
+            except InvalidIDOrPasswordError:
+                info('err', 'invalid id or password')
+            except WrongCaptchaError:
+                info('err', 'wrong captcha')
 
     return None
 

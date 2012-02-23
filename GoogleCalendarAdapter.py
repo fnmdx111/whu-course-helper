@@ -1,8 +1,6 @@
 # encoding: utf-8
 
-"""
-TODO make this file irrelevant to specific school
-"""
+# TODO make this script irrelevant to specific school
 
 
 import atom

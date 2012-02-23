@@ -19,6 +19,8 @@
 
 日志：
 
+    2012/2/23T12:06 0.0.7a bug修正 - 现在载入课程时会判重
+
     2012/2/22T23:26 0.0.7 1.你现在可以创建自定义课程了，
                           2.现在有更多的设置选项了，具体请查看CONFIG_sample_cn
 
@@ -44,44 +46,3 @@
 e-mail: chsc4698@gmail.com
 
 
-
-native script which may improve experience when using 202.114.74.199
-
-current version supports viewing public courses and courses of yourself
-
-also supported are export courses to an html file presented as timetable and sync your courses to Google Calendar
-
-tested under win7, python2.6
-
-dependencies are
-    BeautifulSoup3.2 Simplified BSD License
-    gdata-2.0.16 Apache License 2.0
-
-
-This program is licensed under the General Public License,
-you may obtain a copy of the license at http://www.gnu.org/copyleft/gpl.html
-
-
-Changelog:
-
-    2012/2/22T23:26 0.0.7 1.you can now make customized courses,
-                          2.more config options now are available, please check out the original CONFIG to see what's going on
-
-    2012/2/22T18:00 0.0.6 configs now are available, please check out the original CONFIG to see what's going on
-
-    2012/2/21T10:34 0.0.5a 1.changed repo to whu-course-helper for various reasons
-                           2.automatic select console encoding
-
-    2012/2/20T22:19 0.0.5 courses are now serializable, and of course deserializable
-
-    2012/2/19T11:22 0.0.4a major bug fix - starting week now taken into consideration
-
-    2012/2/19T00:43 0.0.4 available to sync timetable into Google Calendar
-
-    2012/2/13 0.0.3 outputting course table as html supported
-
-    earlier 0.0.2 grabbing course supported
-
-    earlier 0.0.1 shared on github
-
-    earlier 0.0.0 prototype created

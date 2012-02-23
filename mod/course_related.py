@@ -35,6 +35,15 @@ class Course(list):
     def __str__(self):
         return self.__unicode__().encode('utf-8')
 
+    def __eq__(self, other):
+        if not isinstance(other, Course):
+            return False
+        if self.getProperty(COURSE_NAME) == other.getProperty(COURSE_NAME):
+            if self.getProperty(TEACHER_NAME) == other.getProperty(TEACHER_NAME):
+                return True
+
+        return False
+
 
 class PublicCourse(Course):
 
@@ -177,4 +186,5 @@ class CourseSchedule(dict):
 
     def __str__(self):
         return self.__unicode__().encode('utf-8')
+
 
