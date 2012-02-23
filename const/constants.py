@@ -16,6 +16,11 @@ switch = {
 }
 
 
+def info(channel, msg):
+    if switch[channel]:
+        print '%s: %s' % (channel, msg)
+
+
 PASSWORD_PROMPT = 'pwd? '
 ID_PROMPT = 'id? '
 GMAIL_PROMPT = 'gmail? '

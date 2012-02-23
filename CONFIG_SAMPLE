@@ -19,7 +19,7 @@ IfThisCalendarFoundThenPerformDelete = True
 
 # 如果这个参数被设置为True,
 # 那么当创建自定义课程时，可选字段会被跳过（即所有可选字段会被设为默认值'n/a'）
-SkipOptionalFields = True
+SkipOptionalFields = False
 
 LoadCoursesFromWeb = True
 LoadCoursesFromFile = True

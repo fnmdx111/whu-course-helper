@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 import sys
-from mod.fuf import info
+from const.constants import info
 
 
 CONFIG_KEY_STUDENT_ID = u'StudentID'
@@ -34,7 +34,7 @@ configs = {
     CONFIG_KEY_SKIP_OPTIONAL_FIELDS: False,
     CONFIG_KEY_LOAD_COURSES_FROM_WEB: True,
     CONFIG_KEY_LOAD_COURSES_FROM_FILE: True,
-    CONFIG_KEY_SERIALIZED_COURSES_PATH: True,
+    CONFIG_KEY_SERIALIZED_COURSES_PATH: u'serialized_courses.txt',
     CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_EXIT: False,
     CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_CREATE: True,
     CONFIG_KEY_FILTER_COURSE_BY_COURSE_NAME: True,
@@ -52,8 +52,8 @@ FileEncoding = 'utf-8'
 
 def readConfig():
     try:
-        info('info', 'trying to load CONFIG_sample_en')
-        f = unicode(open('CONFIG_sample_en', 'r').read(), FileEncoding)
+        info('info', 'trying to load CONFIG')
+        f = unicode(open('CONFIG', 'r').read(), FileEncoding)
 
         for line in f.split(u'\n'):
             if line.startswith(u'#'):
@@ -69,10 +69,10 @@ def readConfig():
 
     except IOError as err:
         if err.errno == 2:
-            info('info', 'CONFIG_sample_en not found, using default config')
+            info('info', 'CONFIG not found, using default config')
             return
         else:
-            info('err', 'error while loading CONFIG_sample_en')
+            info('err', 'error while loading CONFIG')
             return
 
 

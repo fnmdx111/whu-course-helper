@@ -5,6 +5,7 @@ import urllib
 import urllib2
 from const.constants import *
 from exceptions import InvalidIDOrPasswordError, WrongCaptchaError
+from mod.fuf import eliminateRepeatingCourses, openTxt
 from mod.header_holder import HeaderHolder
 from mod.parsers import myCoursesParser
 from mod.spiders import getCaptchaPic, grabCoursePages
@@ -103,7 +104,8 @@ def readCourses(studentID, password,
         courses += coursesFromWeb
     if LoadCoursesFromFile:
         try:
-            courses += deserializeMyCourses(path)
+            courses += deserializeMyCourses(openTxt(path))
+            courses = eliminateRepeatingCourses(courses)
         except IOError as err:
             if err.errno == 2:
                 info('err', '%s not found, skipping loading courses from file' % configs[CONFIG_KEY_SERIALIZED_COURSES_PATH])

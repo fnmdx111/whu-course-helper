@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 # TODO make this script irrelevant to specific school
-
+from urllib2 import URLError
 
 import atom
 import datetime
@@ -12,6 +12,7 @@ from mod.config import *
 import gdata.calendar
 import gdata.calendar.client
 from mod import whu
+from mod.exceptions import InvalidIDOrPasswordError, WrongCaptchaError
 from mod.fuf import getAccountInfo, genLocationByCourseSchedule
 
 
@@ -41,7 +42,6 @@ class GoogleCalendarAdapter(object):
                         self.currentCalendar = calendar
                     break
             else:
-                print 'title:', configs[CONFIG_KEY_THIS_CALENDAR_TITLE]
                 self.currentCalendar = self.calendarClient.InsertCalendar(new_calendar=self.genNewCalendar(
                     configs[CONFIG_KEY_THIS_CALENDAR_TITLE],
                     configs[CONFIG_KEY_THIS_CALENDAR_SUMMARY],
@@ -186,6 +186,10 @@ def syncToGoogleCalendar():
 if __name__ == '__main__':
     try:
         syncToGoogleCalendar()
-    except Exception as err:
+    except InvalidIDOrPasswordError:
+        info('err', 'invalid id or password')
+    except WrongCaptchaError:
+        info('err', 'wrong captcha')
+    except URLError as err:
         info('err', 'got fatal error: %s' % err )
         exit(0)

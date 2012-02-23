@@ -3,7 +3,7 @@ from const.dict_keys import COURSE_NAME, TEACHER_NAME
 from mod import whu
 from mod.config import *
 from mod.exceptions import InvalidIDOrPasswordError, WrongCaptchaError
-from mod.fuf import getAccountInfo
+from mod.fuf import getAccountInfo, eliminateRepeatingCourses, openTxt
 from mod.serialize import deserializeMyCourses, createCustomCourse, serializeCourses
 
 usage = """usage:
@@ -16,25 +16,6 @@ usage = """usage:
 \tse(r)ialize courses from web
 \tshow (u)sage
 \t(e)xit"""
-
-
-def openTxt(path):
-    try:
-        return open(path, 'r')
-    except IOError as err:
-        if err.errno == 2:
-            if configs[CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_EXIT]:
-                info('err', '%s not found, program will now shutdown' % path)
-                exit(0)
-            elif configs[CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_CREATE]:
-                info('info', '%s not found, creating %s' % (path, path))
-                try:
-                    f = open(path, 'w')
-                    f.close()
-                    return open(path, 'r')
-                except Exception as err:
-                    info('err', 'error creating %s, program will now shutdown\ndetail: %s' % (path, err))
-                    exit(0)
 
 
 def init(path=configs[CONFIG_KEY_SERIALIZED_COURSES_PATH]):
@@ -52,15 +33,6 @@ def init(path=configs[CONFIG_KEY_SERIALIZED_COURSES_PATH]):
             info('err', 'fatal error %s' % err)
     finally:
         f.close()
-
-
-def eliminateRepeatingCourses(l):
-    result = []
-    for item in l:
-        if item not in result:
-            result.append(item)
-
-    return result
 
 
 customCourses = eliminateRepeatingCourses(init())
