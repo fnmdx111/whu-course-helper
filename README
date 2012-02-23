@@ -19,6 +19,8 @@
 
 日志：
 
+    2012/2/23T13:39 0.0.7d bug修正 - 修正了CourseSchedule的一处正则错误
+
     2012/2/23T12:51 0.0.7c 增加了verbose回显
 
     2012/2/23T12:44 0.0.7b bug修正 - 对GoogleCalendarAdapter导入的课程进行了判重

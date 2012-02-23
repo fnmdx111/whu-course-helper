@@ -132,7 +132,7 @@ class CourseSchedule(dict):
                          ur'\s*,\s*'\
                          ur'(?:(?P<%s>.+))?$' % KEYS_FOR_RE)
     pattern1 = re.compile(ur'^(\d+)$')
-    pattern2 = re.compile(ur'^(.+)\s*-\s*(\d+)$')
+    pattern2 = re.compile(ur'^([^\-]+)\s*\-\s*([A-Za-z0-9]+)$')
     pattern3 = re.compile(ur'^(.+?)(\d+)$')
 
     def __init__(self, rawData=None, day=None, fromDict=None):
