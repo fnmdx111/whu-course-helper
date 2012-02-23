@@ -11,7 +11,7 @@ GMailPwd = ''
 
 ThisCalendarTitle = u'武大课表'
 ThisCalendarColor = u'#2952A3'
-ThisCalendarSummary = u'created by WhuCoursesHelper'
+ThisCalendarSummary = u'created by whu-course-helper'
 
 # if this parameter is True,
 # then when a calendar titled by ThisCalendarTitle is found,
@@ -30,6 +30,15 @@ LoadCoursesFromFile = True
 # file path which specifies where custom courses will be saved after they are serialized
 SerializedCoursesPath = 'serialized_courses.txt'
 
-
+# these two options are exclusive, if the path where the serialized courses are stored is not found,
+# the program will either exit or create a new empty txt file according to the options you give
 IfSerializedCoursesPathNotFoundThenPerformExit = False
+IfSerializedCoursesPathNotFoundThenPerformCreate = True
+
+
+# In CourseCustomizer.py, if FilterCourseBy* is set to be True,
+# when showing courses, courses whose * contains the specific keyword you give will
+# be shown
+FilterCourseByCourseName = True
+FilterCourseByTeacherName = True
 

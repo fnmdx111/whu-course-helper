@@ -17,6 +17,9 @@ you may obtain a copy of the license at http://www.gnu.org/copyleft/lesser.html
 
 Changelog:
 
+    2012/2/22T23:26 0.0.7 1.you can now make customized courses,
+                          2.more config options now are available, please check out the original CONFIG to see what's going on
+
     2012/2/22T18:00 0.0.6 configs now are available, please check out the original CONFIG to see what's going on
 
     2012/2/21T10:34 0.0.5a 1.changed repo to whu-course-helper for various reasons

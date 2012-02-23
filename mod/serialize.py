@@ -7,7 +7,7 @@ from const.constants import  ABBR_DAYS_TO_DAYS
 from const.dict_keys import *
 from mod.fuf import info
 
-def serializeCourses(courses, path='serialized_courses.txt'):
+def serializeCourses(courses, f):
     """
         note that i only choose json for serialization,
         because pickle isn't really safe according to the python manual
@@ -20,28 +20,28 @@ def serializeCourses(courses, path='serialized_courses.txt'):
 
         coursesDicts.append(d)
 
-    with open(path, 'w') as f:
-        print >> f, json.dumps(coursesDicts, ensure_ascii=False).encode(FileEncoding)
+    print >> f, json.dumps(coursesDicts, ensure_ascii=False).encode(FileEncoding)
+
+    return True
 
 
-def deserializeMyCourses(path='serialized_courses.txt'):
-    with open(path, 'r') as f:
-        courses_dicts = json.load(f)
+def deserializeMyCourses(f):
+    courses_dicts = json.load(f)
 
-        courses = []
-        for item in courses_dicts:
-            course = MyCourse()
+    courses = []
+    for item in courses_dicts:
+        course = MyCourse()
 
-            schedules = item[SCHEDULE][:]
-            del item[SCHEDULE]
+        schedules = item[SCHEDULE][:]
+        del item[SCHEDULE]
 
-            course.setProperties(item)
-            for schedule in schedules:
-                course.append(CourseSchedule(fromDict=schedule))
+        course.setProperties(item)
+        for schedule in schedules:
+            course.append(CourseSchedule(fromDict=schedule))
 
-            courses.append(course)
+        courses.append(course)
 
-        return courses
+    return courses
 
 
 def createCustomCourse():
@@ -106,10 +106,3 @@ def createCustomCourse():
 
     return thisCourse
 
-
-if __name__ == '__main__':
-    serializeCourses([createCustomCourse(), createCustomCourse()])
-    courses = deserializeMyCourses()
-
-    for item in courses:
-        print item

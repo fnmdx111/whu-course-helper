@@ -17,6 +17,10 @@ CONFIG_KEY_LOAD_COURSES_FROM_WEB = u'LoadCoursesFromWeb'
 CONFIG_KEY_LOAD_COURSES_FROM_FILE = u'LoadCoursesFromFile'
 CONFIG_KEY_SERIALIZED_COURSES_PATH = u'SerializedCoursesPath'
 CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_EXIT = u'IfSerializedCoursesPathNotFoundThenPerformExit'
+CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_CREATE = u'IfSerializedCoursesPathNotFoundThenPerformCreate'
+CONFIG_KEY_FILTER_COURSE_BY_COURSE_NAME = u'FilterCourseByCourseName'
+CONFIG_KEY_FILTER_COURSE_BY_TEACHER_NAME = u'FilterCourseByTeacherName'
+
 
 configs = {
     CONFIG_KEY_STUDENT_ID: u'',
@@ -31,7 +35,10 @@ configs = {
     CONFIG_KEY_LOAD_COURSES_FROM_WEB: True,
     CONFIG_KEY_LOAD_COURSES_FROM_FILE: True,
     CONFIG_KEY_SERIALIZED_COURSES_PATH: True,
-    CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_EXIT: False
+    CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_EXIT: False,
+    CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_CREATE: True,
+    CONFIG_KEY_FILTER_COURSE_BY_COURSE_NAME: True,
+    CONFIG_KEY_FILTER_COURSE_BY_TEACHER_NAME: True
 }
 
 # note that if you are using linux or any other modern ide which supports unicode,
@@ -45,6 +52,7 @@ FileEncoding = 'utf-8'
 
 def readConfig():
     try:
+        info('info', 'trying to load CONFIG')
         f = unicode(open('CONFIG', 'r').read(), FileEncoding)
 
         for line in f.split(u'\n'):
@@ -54,7 +62,7 @@ def readConfig():
             if u'=' in line:
                 l = [s.strip() for s in line.split(u'=')]
                 if l[0] in configs:
-                    exec line
+                    info('dbg', 'config %s found, value=%s' % (l[0], eval(l[1])))
                     configs[l[0]] = eval(l[1])
                 else:
                     info('err', 'unrecognized config parameter %s' % l[0])
