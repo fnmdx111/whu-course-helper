@@ -41,3 +41,8 @@ BUILDING = u'building'
 
 SCHEDULE = u'schedule'
 
+ACTUAL_START_TIME = u'actual_start_time'
+ACTUAL_END_TIME = u'actual_end_time'
+WHERE = u'where'
+COUNT = u'count'
+BYDAY = u'byday'

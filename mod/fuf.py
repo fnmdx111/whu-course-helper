@@ -5,7 +5,6 @@
 """
 import getpass
 from const.constants import switch, info
-from const.dict_keys import CLASSROOM, BUILDING
 from mod.config import CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_CREATE, configs, CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_EXIT
 
 
@@ -20,14 +19,6 @@ def getAccountInfo(variable, prompt, usePwdMode=False):
             return raw_input(prompt)
 
     return variable
-
-
-def genLocationByCourseSchedule(schedule):
-    classroomAndBuilding = schedule[BUILDING]
-    if schedule[BUILDING] != schedule[CLASSROOM]:
-        classroomAndBuilding += u'-%s' % schedule[CLASSROOM]
-
-    return classroomAndBuilding
 
 
 def eliminateRepeatingCourses(l):

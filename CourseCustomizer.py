@@ -1,10 +1,10 @@
 from const import constants
 from const.dict_keys import COURSE_NAME, TEACHER_NAME
-from mod import whu
 from mod.config import *
 from mod.exceptions import InvalidIDOrPasswordError, WrongCaptchaError
 from mod.fuf import getAccountInfo, eliminateRepeatingCourses, openTxt
 from mod.serialize import deserializeMyCourses, createCustomCourse, serializeCourses
+from schools.whu import whu
 
 usage = """usage:
 \t(c)reate a new custom course
@@ -130,7 +130,7 @@ operations = {
     'h': lambda: selectSpecificCourse(justShowing=True),
     'r': lambda: serializeCoursesFromWeb(getAccountInfo(configs[CONFIG_KEY_STUDENT_ID], constants.ID_PROMPT),
                                  getAccountInfo(configs[CONFIG_KEY_STUDENT_PWD], constants.PASSWORD_PROMPT, usePwdMode=True)),
-    'a': lambda: clearCourses(),
+    'a': clearCourses,
     'e': lambda: exit(0)
 }
 

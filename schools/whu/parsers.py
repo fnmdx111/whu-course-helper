@@ -71,3 +71,10 @@ def myCoursesParser(rawCourseData):
 
     return courseData
 
+def genLocationByCourseSchedule(schedule):
+    classroomAndBuilding = schedule[BUILDING]
+    if schedule[BUILDING] != schedule[CLASSROOM]:
+        classroomAndBuilding += u'-%s' % schedule[CLASSROOM]
+
+    return classroomAndBuilding
+

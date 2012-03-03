@@ -3,12 +3,12 @@
 from BeautifulSoup import BeautifulSoup
 import urllib
 import urllib2
-from const.constants import *
-from exceptions import InvalidIDOrPasswordError, WrongCaptchaError
+from mod.exceptions import InvalidIDOrPasswordError, WrongCaptchaError
 from mod.fuf import eliminateRepeatingCourses, openTxt
 from mod.header_holder import HeaderHolder
-from mod.parsers import myCoursesParser
-from mod.spiders import getCaptchaPic, grabCoursePages
+from schools.whu.constants import *
+from schools.whu.parsers import myCoursesParser
+from schools.whu.spiders import getCaptchaPic, grabCoursePages
 from mod.serialize import deserializeMyCourses
 from mod.config import *
 

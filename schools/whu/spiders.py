@@ -1,8 +1,8 @@
 from BeautifulSoup import BeautifulSoup
 import urllib2
-from const.constants import *
 from mod.fuf import info
-from mod.parsers import publicCoursesParser
+from schools.whu.constants import *
+from schools.whu.parsers import publicCoursesParser
 
 def grabCoursePages(header, pageURL,
                     parser=None,

@@ -4,9 +4,10 @@ from const.constants import   PASSWORD_PROMPT, ID_PROMPT, DAYS_TO_NUMS
 
 from const.dict_keys import *
 from BeautifulSoup import BeautifulSoup
-from mod.fuf import getAccountInfo, genLocationByCourseSchedule
-from mod import whu
+from mod.fuf import getAccountInfo
 from mod.config import *
+from schools.whu import whu
+from schools.whu.parsers import genLocationByCourseSchedule
 
 
 mainHtml = u'''

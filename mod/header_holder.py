@@ -1,8 +1,8 @@
 
-from const.constants import *
 import urllib2
 import cookielib
 from mod.fuf import info
+from schools.whu.constants import *
 
 class HeaderHolder(dict):
 
