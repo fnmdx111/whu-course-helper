@@ -1,4 +1,5 @@
 # encoding: utf-8
+from const.dict_keys import *
 
 ORIGINAL_HOST = '202.114.74.199'
 MAIN_PAGE_URL = r'http://%s' % ORIGINAL_HOST
@@ -21,3 +22,19 @@ THIS_CALENDAR_TIMEZONE = u'Asia/Shanghai'
 THIS_CALENDAR_LOCATION = u'武汉'
 SEMESTER_STARTING_DATE = (2012, 2, 12)
 
+
+SCHEDULE_PATTERN = u'{0}-{1}周,每{2}周;{3}-{4}节,{5}区,{6}'
+SCHEDULE_EXAMPLE = u'周一 1-15周,每1周;3-5节,3区,附1-302 => mon 1 15 1 3 5 3 附1-302'
+
+NECESSARY_FIELDS = (
+    COURSE_NAME,
+    TEACHER_NAME,
+)
+OPTIONAL_FIELDS = (
+    SCORE_TYPE,
+    COURSE_TYPE,
+    MAJOR,
+    CREDIT,
+    PERIOD,
+    REMARKS
+)

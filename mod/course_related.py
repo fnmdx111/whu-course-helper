@@ -1,7 +1,6 @@
 # encoding: utf-8
 from abc import abstractmethod
 from const.dict_keys import *
-import re
 
 
 class Course(list):
@@ -120,48 +119,14 @@ class CourseSchedule(dict):
         CLASSROOM,
         BUILDING
     )
-    KEYS_FOR_RE = KEYS[1:len(KEYS) - 1]
-    PATTERN = re.compile(ur'^.*'\
-                         ur'(?P<%s>\d{1,2})\D+(?P<%s>\d{1,2})周'\
-                         ur'\s*,\s*'\
-                         ur'每(?P<%s>\d+)周'\
-                         ur'\s*;\s*'\
-                         ur'(?P<%s>\d{1,2})\D+(?P<%s>\d{1,2})节'\
-                         ur'\s*,s*'\
-                         ur'(?:(?P<%s>\d+)区)?'\
-                         ur'\s*,\s*'\
-                         ur'(?:(?P<%s>.+))?$' % KEYS_FOR_RE)
-    pattern1 = re.compile(ur'^(\d+)$')
-    pattern2 = re.compile(ur'^([^\-]+)\s*\-\s*([A-Za-z0-9]+)$')
-    pattern3 = re.compile(ur'^(.+?)(\d+)$')
 
-    def __init__(self, rawData=None, day=None, fromDict=None):
+
+    def __init__(self, fromDict=None):
         dict.__init__(self)
 
         if fromDict:
             self._fromDict(fromDict)
             return
-
-        matches = CourseSchedule.PATTERN.search(rawData)
-
-        self[DAY] = day
-
-        if matches:
-            for key in CourseSchedule.KEYS_FOR_RE:
-                self[key] = matches.groupdict()[key]
-
-            if not self[CLASSROOM]:
-                self[BUILDING] = None
-                return
-
-
-            matches1 = CourseSchedule.pattern1.search(matches.groupdict().get(CLASSROOM, ''))
-            matches2 = CourseSchedule.pattern2.search(matches.groupdict()[CLASSROOM]) or CourseSchedule.pattern3.search(matches.groupdict()[CLASSROOM])
-            if matches1:
-                self[BUILDING] = self[CLASSROOM]
-            elif matches2:
-                self[BUILDING] = matches2.group(1)
-                self[CLASSROOM] = matches2.group(2)
 
 
     def _fromDict(self, fromDict):

@@ -44,25 +44,9 @@ def deserializeMyCourses(f):
     return courses
 
 
-def createCustomCourse():
+def createCustomCourse(scheduleParser, necessaryFields, optionalFields, schedulePattern, scheduleExample, scheduleParameterCount):
     def _promptInput(fieldName, necessary=True):
         return unicode(raw_input('%s field(%s)? ' % ('necessary' if necessary else 'optional', fieldName)), ConsoleEncoding)
-
-    schedulePattern = u'{0}-{1}周,每{2}周;{3}-{4}节,{5}区,{6}'
-    scheduleExample = u'周一 1-15周,每1周;3-5节,3区,附1-302 => mon 1 15 1 3 5 3 附1-302'
-
-    necessaryFields = (
-        COURSE_NAME,
-        TEACHER_NAME,
-    )
-    optionalFields = (
-        SCORE_TYPE,
-        COURSE_TYPE,
-        MAJOR,
-        CREDIT,
-        PERIOD,
-        REMARKS
-    )
 
     courseDict = {}
     for key in MyCourse.KEYS:
@@ -96,11 +80,12 @@ def createCustomCourse():
         else:
             l = input.split(u' ')
 
-            if len(l) != 8:
+            if len(l) != scheduleParameterCount:
                 info('err', 'invalid input')
                 continue
 
-            thisSchedule = CourseSchedule(schedulePattern.format(*l[1:]), ABBR_DAYS_TO_DAYS[l[0]])
+
+            thisSchedule = scheduleParser(CourseSchedule(), ABBR_DAYS_TO_DAYS[l[0]], schedulePattern.format(*l[1:]))
 
             thisCourse.append(thisSchedule)
 

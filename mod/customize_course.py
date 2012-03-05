@@ -3,8 +3,7 @@ from const.dict_keys import COURSE_NAME, TEACHER_NAME
 from mod.config import *
 from mod.exceptions import InvalidIDOrPasswordError, WrongCaptchaError
 from mod.fuf import getAccountInfo, eliminateRepeatingCourses, openTxt
-from mod.serialize import deserializeMyCourses, createCustomCourse, serializeCourses
-from schools.whu import whu
+from mod.serialize import deserializeMyCourses, serializeCourses
 
 usage = """usage:
 \t(c)reate a new custom course
@@ -16,6 +15,10 @@ usage = """usage:
 \tse(r)ialize courses from web
 \tshow (u)sage
 \t(e)xit"""
+
+
+courseGrabber = None
+courseCreator = None
 
 
 def init(path=configs[CONFIG_KEY_SERIALIZED_COURSES_PATH]):
@@ -39,7 +42,7 @@ customCourses = eliminateRepeatingCourses(init())
 
 
 def createNewCourse():
-    customCourses.append(createCustomCourse())
+    customCourses.append(courseCreator())
 
 
 def saveChanges(courses, path=configs[CONFIG_KEY_SERIALIZED_COURSES_PATH]):
@@ -59,7 +62,7 @@ def saveChanges(courses, path=configs[CONFIG_KEY_SERIALIZED_COURSES_PATH]):
 def serializeCoursesFromWeb(studentID, studentPwd):
     global customCourses
 
-    _, courses = whu.readCourses(studentID, studentPwd, LoadCoursesFromFile=False)
+    courses = courseGrabber(studentID, studentPwd)
 
     newCourses = [course for course in courses if course not in customCourses]
     info('info', '%s course(s) from web has been grabbed from your personal timetable, of which %s course(s) is new' % (len(courses), len(newCourses)))
@@ -135,7 +138,11 @@ operations = {
 }
 
 
-def main():
+def main(courseCreatorParam, courseGrabberParam):
+    global courseCreator, courseGrabber
+    courseCreator = courseCreatorParam
+    courseGrabber = courseGrabberParam
+
     print usage
 
     while True:
@@ -154,8 +161,4 @@ def main():
                 info('err', 'wrong captcha')
 
     return None
-
-
-if __name__ == '__main__':
-    main()
 

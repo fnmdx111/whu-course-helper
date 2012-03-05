@@ -3,7 +3,6 @@
 import datetime
 from mod.google_calendar_proxy import *
 from const.constants import DAYS_TO_NUMS, info, GMAIL_PROMPT, PASSWORD_PROMPT, ID_PROMPT
-from const.dict_keys import *
 from mod.config import CONFIG_KEY_GMAIL_ACCOUNT, configs, CONFIG_KEY_GMAIL_PWD, CONFIG_KEY_STUDENT_ID
 from mod.fuf import getAccountInfo
 from schools.whu import whu
@@ -14,7 +13,7 @@ from schools.whu.parsers import genLocationByCourseSchedule
 class WhuGoogleCalendarAdapter(object):
 
     """
-        this adapter consumes of courses of whu, and excrete dicts which GoogleCalendarProxy can understand
+        this adapter consumes courses of whu, and excrete dicts which GoogleCalendarProxy can understand
     """
     def __init__(self, whuCourses):
         self.whuCoursesDictList = []
@@ -49,7 +48,6 @@ class WhuGoogleCalendarAdapter(object):
         info('info', '%s courses digested' % len(self.whuCoursesDictList))
 
         self.proxy = GoogleCalendarProxy(getAccountInfo(configs[CONFIG_KEY_GMAIL_ACCOUNT], GMAIL_PROMPT), getAccountInfo(configs[CONFIG_KEY_GMAIL_PWD], PASSWORD_PROMPT, True), THIS_CALENDAR_TIMEZONE, THIS_CALENDAR_LOCATION)
-
 
 
     def getActualDate(self, startingWeek, day):

@@ -1,4 +1,5 @@
 # encoding: utf-8
+import re
 from const.dict_keys import *
 from mod.course_related import CourseSchedule, PublicCourse, MyCourse
 
@@ -26,7 +27,7 @@ def publicCoursesParser(rawCourseData):
         for key in PublicCourse.KEYS[8:15]:
             if course.getProperty(key) != u'&nbsp;':
                 course.getProperties()[key] = ''.join(course.getProperties()[key].split('\n'))
-                course.append(CourseSchedule(course.getProperty(key), key))
+                course.append(scheduleParser(CourseSchedule(), key, course.getProperty(key)))
             else:
 #                course.setProperty(key, None)
                 del course.getProperties()[key]
@@ -57,7 +58,7 @@ def myCoursesParser(rawCourseData):
         for key in MyCourse.KEYS[13:20]:
             if course.getProperty(key) != u'&nbsp;':
                 course.getProperties()[key] = ''.join(course.getProperties()[key].split('\n'))
-                course.append(CourseSchedule(course.getProperty(key), key))
+                course.append(scheduleParser(CourseSchedule(), key, course.getProperty(key)))
             else:
 #                course.setProperty(key, None)
                 del course.getProperties()[key]
@@ -78,3 +79,41 @@ def genLocationByCourseSchedule(schedule):
 
     return classroomAndBuilding
 
+
+KEYS_FOR_RE = CourseSchedule.KEYS[1:len(CourseSchedule.KEYS) - 1]
+PATTERN = re.compile(ur'^.*'\
+                     ur'(?P<%s>\d{1,2})\D+(?P<%s>\d{1,2})周'\
+                     ur'\s*,\s*'\
+                     ur'每(?P<%s>\d+)周'\
+                     ur'\s*;\s*'\
+                     ur'(?P<%s>\d{1,2})\D+(?P<%s>\d{1,2})节'\
+                     ur'\s*,s*'\
+                     ur'(?:(?P<%s>\d+)区)?'\
+                     ur'\s*,\s*'\
+                     ur'(?:(?P<%s>.+))?$' % KEYS_FOR_RE)
+pattern1 = re.compile(ur'^(\d+)$')
+pattern2 = re.compile(ur'^([^\-]+)\s*\-\s*([A-Za-z0-9]+)$')
+pattern3 = re.compile(ur'^(.+?)(\d+)$')
+def scheduleParser(self, day, rawData):
+    matches = PATTERN.search(rawData)
+
+    self[DAY] = day
+
+    if matches:
+        for key in KEYS_FOR_RE:
+            self[key] = matches.groupdict()[key]
+
+        if not self[CLASSROOM]:
+            self[BUILDING] = None
+            return
+
+
+        matches1 = pattern1.search(matches.groupdict().get(CLASSROOM, ''))
+        matches2 = pattern2.search(matches.groupdict()[CLASSROOM]) or pattern3.search(matches.groupdict()[CLASSROOM])
+        if matches1:
+            self[BUILDING] = self[CLASSROOM]
+        elif matches2:
+            self[BUILDING] = matches2.group(1)
+            self[CLASSROOM] = matches2.group(2)
+
+    return self
