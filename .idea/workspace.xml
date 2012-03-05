@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="336fc7f9-350c-48fc-ad5f-12a92e88dc3d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/schools/whu/CustomizerAdapter.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/how_to_expand.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README" afterPath="$PROJECT_DIR$/README" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/const/constants.py" afterPath="$PROJECT_DIR$/const/constants.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mod/course_related.py" afterPath="$PROJECT_DIR$/mod/course_related.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mod/serialize.py" afterPath="$PROJECT_DIR$/mod/serialize.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schools/whu/CalendarAdapter.py" afterPath="$PROJECT_DIR$/schools/whu/CalendarAdapter.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schools/whu/constants.py" afterPath="$PROJECT_DIR$/schools/whu/constants.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schools/whu/parsers.py" afterPath="$PROJECT_DIR$/schools/whu/parsers.py" />
-      <change type="MOVED" beforePath="D:\workspace\whu-course-helper\CourseCustomizer.py" afterPath="$PROJECT_DIR$/mod/customize_course.py" />
     </list>
     <ignored path="WhuCoursesHelper.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,15 +51,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="constants.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/const/constants.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="17" selection-start="385" selection-end="385" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CONFIG_SAMPLE" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CONFIG_SAMPLE">
           <provider selected="true" editor-type-id="text-editor">
@@ -106,13 +89,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="customize_course.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="customize_course.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mod/customize_course.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="314" selection-end="314" vertical-scroll-proportion="0.2060606">
+            <state line="6" column="0" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="how_to_expand.txt" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/doc/how_to_expand.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="102" column="24" selection-start="3261" selection-end="3261" vertical-scroll-proportion="0.5151515">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -159,7 +151,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/mod/header_holder.py" />
         <option value="$PROJECT_DIR$/mod/config.py" />
         <option value="$PROJECT_DIR$/mod/google_calendar_proxy.py" />
         <option value="$PROJECT_DIR$/mod/fuf.py" />
@@ -175,6 +166,7 @@
         <option value="$PROJECT_DIR$/schools/whu/CustomizerAdapter.py" />
         <option value="$PROJECT_DIR$/README" />
         <option value="$PROJECT_DIR$/mod/customize_course.py" />
+        <option value="$PROJECT_DIR$/doc/学校扩展指南.txt" />
       </list>
     </option>
   </component>
@@ -269,6 +261,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="mod" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WhuCoursesHelper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="whu-course-helper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="doc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -573,9 +579,9 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26948053" sideWeight="0.99561405" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15918654" sideWeight="0.22294372" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23323323" sideWeight="0.60064936" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23323323" sideWeight="0.60064936" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3560606" sideWeight="0.9924179" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39935064" sideWeight="0.9985945" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39935064" sideWeight="0.9985945" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -757,10 +763,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mod/customize_course.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="314" selection-end="314" vertical-scroll-proportion="0.2060606">
+        <state line="6" column="0" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/how_to_expand.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="102" column="24" selection-start="3261" selection-end="3261" vertical-scroll-proportion="0.5151515">
+          <folding />
         </state>
       </provider>
     </entry>
