@@ -1,5 +1,5 @@
 # encoding: utf-8
-
+import __init__
 from const.constants import   PASSWORD_PROMPT, ID_PROMPT, DAYS_TO_NUMS
 
 from const.dict_keys import *

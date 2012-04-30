@@ -72,6 +72,7 @@ def myCoursesParser(rawCourseData):
 
     return courseData
 
+
 def genLocationByCourseSchedule(schedule):
     classroomAndBuilding = schedule[BUILDING]
     if schedule[BUILDING] != schedule[CLASSROOM]:
@@ -81,15 +82,15 @@ def genLocationByCourseSchedule(schedule):
 
 
 KEYS_FOR_RE = CourseSchedule.KEYS[1:len(CourseSchedule.KEYS) - 1]
-PATTERN = re.compile(ur'^.*'\
-                     ur'(?P<%s>\d{1,2})\D+(?P<%s>\d{1,2})周'\
-                     ur'\s*,\s*'\
-                     ur'每(?P<%s>\d+)周'\
-                     ur'\s*;\s*'\
-                     ur'(?P<%s>\d{1,2})\D+(?P<%s>\d{1,2})节'\
-                     ur'\s*,s*'\
-                     ur'(?:(?P<%s>\d+)区)?'\
-                     ur'\s*,\s*'\
+PATTERN = re.compile(ur'^.*'
+                     ur'(?P<%s>\d{1,2})\D+(?P<%s>\d{1,2})周'
+                     ur'\s*,\s*'
+                     ur'每(?P<%s>\d+)周'
+                     ur'\s*;\s*'
+                     ur'(?P<%s>\d{1,2})\D+(?P<%s>\d{1,2})节'
+                     ur'\s*,s*'
+                     ur'(?:(?P<%s>\d+)区)?'
+                     ur'\s*,\s*'
                      ur'(?:(?P<%s>.+))?$' % KEYS_FOR_RE)
 pattern1 = re.compile(ur'^(\d+)$')
 pattern2 = re.compile(ur'^([^\-]+)\s*\-\s*([A-Za-z0-9]+)$')

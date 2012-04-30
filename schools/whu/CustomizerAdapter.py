@@ -1,3 +1,4 @@
+import __init__
 from mod import customize_course
 from mod.serialize import createCustomCourse
 from schools.whu import parsers, whu

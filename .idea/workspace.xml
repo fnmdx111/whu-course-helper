@@ -2,8 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="336fc7f9-350c-48fc-ad5f-12a92e88dc3d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/how_to_expand.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mod/.idea/mod.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mod/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mod/.idea/inspectionProfiles/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mod/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mod/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mod/.idea/scopes/scope_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mod/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mod/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schools/whu/CalendarAdapter.py" afterPath="$PROJECT_DIR$/schools/whu/CalendarAdapter.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schools/whu/CustomizerAdapter.py" afterPath="$PROJECT_DIR$/schools/whu/CustomizerAdapter.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schools/whu/TableCreator.py" afterPath="$PROJECT_DIR$/schools/whu/TableCreator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schools/whu/__init__.py" afterPath="$PROJECT_DIR$/schools/whu/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schools/whu/parsers.py" afterPath="$PROJECT_DIR$/schools/whu/parsers.py" />
     </list>
     <ignored path="WhuCoursesHelper.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -15,7 +27,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
+    <option name="PATCH_PATH" value="D:\workspace\whu-course-helper" />
   </component>
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
@@ -29,32 +41,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CalendarAdapter.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/schools/whu/CalendarAdapter.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="0" selection-start="1149" selection-end="1149" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#19#34#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="parsers.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/schools/whu/parsers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="108" column="0" selection-start="3727" selection-end="3727" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#18#27#0" expanded="true" />
-              </folding>
+            <state line="92" column="31" selection-start="3242" selection-end="3242" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CONFIG_SAMPLE" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CONFIG_SAMPLE">
+      <file leaf-file-name="TableCreator.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/schools/whu/TableCreator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="0" selection-start="764" selection-end="764" vertical-scroll-proportion="0.0">
+            <state line="1" column="14" selection-start="32" selection-end="32" vertical-scroll-proportion="0.027881041">
               <folding />
             </state>
           </provider>
@@ -63,68 +62,75 @@
       <file leaf-file-name="CustomizerAdapter.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/schools/whu/CustomizerAdapter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="19" selection-start="424" selection-end="424" vertical-scroll-proportion="0.0">
+            <state line="5" column="0" selection-start="235" selection-end="235" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#0#32#0" expanded="true" />
+                <element signature="e#0#15#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="constants.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/schools/whu/constants.py">
+      <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/schools/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="11" selection-start="1110" selection-end="1110" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README">
+      <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/schools/whu/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="0" selection-start="594" selection-end="594" vertical-scroll-proportion="0.0">
+            <state line="2" column="3" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="customize_course.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mod/customize_course.py">
+      <file leaf-file-name="CalendarAdapter.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/schools/whu/CalendarAdapter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
+            <state line="30" column="24" selection-start="1088" selection-end="1088" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#0#27#0" expanded="true" />
+                <element signature="e#19#34#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="how_to_expand.txt" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/doc/how_to_expand.txt">
+      <file leaf-file-name="google_calendar_proxy.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mod/google_calendar_proxy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="102" column="24" selection-start="3261" selection-end="3261" vertical-scroll-proportion="0.5151515">
+            <state line="63" column="33" selection-start="2855" selection-end="2855" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fuf.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mod/fuf.py">
+      <file leaf-file-name="whu.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/schools/whu/whu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="580" selection-end="580" vertical-scroll-proportion="0.0">
+            <state line="79" column="39" selection-start="2185" selection-end="2185" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="course_related.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mod/course_related.py">
+      <file leaf-file-name="header_holder.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mod/header_holder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#18#48#0" expanded="true" />
-              </folding>
+            <state line="27" column="0" selection-start="675" selection-end="675" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="serialize.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mod/serialize.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="42" column="0" selection-start="1007" selection-end="1007" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -138,12 +144,11 @@
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
-      <array>
+      <list>
         <option value="ZH C &lt;chsc4698@gmail.com&gt;" />
-      </array>
+      </list>
     </option>
-    <option name="CHECKOUT_INCLUDE_TAGS" value="false" />
-    <option name="UPDATE_CHANGES_POLICY" value="STASH" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitLogSettings">
     <option name="myStructureFilterPaths" />
@@ -151,27 +156,27 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/mod/config.py" />
-        <option value="$PROJECT_DIR$/mod/google_calendar_proxy.py" />
         <option value="$PROJECT_DIR$/mod/fuf.py" />
-        <option value="$PROJECT_DIR$/schools/whu/TableCreator.py" />
-        <option value="$PROJECT_DIR$/schools/whu/parsers.py" />
         <option value="$PROJECT_DIR$/const/constants.py" />
         <option value="$PROJECT_DIR$/mod/course_related.py" />
-        <option value="$PROJECT_DIR$/schools/whu/constants.py" />
         <option value="$PROJECT_DIR$/mod/serialize.py" />
         <option value="$PROJECT_DIR$/schools/whu/CourseCustomizer.py" />
-        <option value="$PROJECT_DIR$/schools/whu/CalendarAdapter.py" />
         <option value="$PROJECT_DIR$/CourseCustomizer.py" />
-        <option value="$PROJECT_DIR$/schools/whu/CustomizerAdapter.py" />
         <option value="$PROJECT_DIR$/README" />
-        <option value="$PROJECT_DIR$/mod/customize_course.py" />
         <option value="$PROJECT_DIR$/doc/学校扩展指南.txt" />
+        <option value="$PROJECT_DIR$/mod/config.py" />
+        <option value="$PROJECT_DIR$/mod/customize_course.py" />
+        <option value="$PROJECT_DIR$/schools/whu/constants.py" />
+        <option value="$PROJECT_DIR$/schools/whu/parsers.py" />
+        <option value="$PROJECT_DIR$/schools/whu/CustomizerAdapter.py" />
+        <option value="$PROJECT_DIR$/schools/whu/__init__.py" />
+        <option value="$PROJECT_DIR$/schools/whu/CalendarAdapter.py" />
+        <option value="$PROJECT_DIR$/schools/whu/TableCreator.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1063" />
+    <option name="width" value="927" />
     <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -200,6 +205,9 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files" />
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -294,7 +302,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -306,10 +313,11 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="166" />
-    <property name="options.lastSelected" value="coverage" />
+    <property name="options.lastSelected" value="project.propVCSSupport.VCSs.Git" />
     <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CalendarWatcher/util" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="175" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="845" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="840" />
@@ -513,13 +521,13 @@
       <item index="0" class="java.lang.String" itemvalue="Python.GoogleCalendarAdapter" />
       <item index="1" class="java.lang.String" itemvalue="Python.serialize" />
       <item index="2" class="java.lang.String" itemvalue="Python.CourseCustomizer" />
-      <item index="3" class="java.lang.String" itemvalue="Python.whuchdefault" />
-      <item index="4" class="java.lang.String" itemvalue="Python.CalendarAdapter" />
-      <item index="5" class="java.lang.String" itemvalue="Python.CustomizerAdapter" />
+      <item index="3" class="java.lang.String" itemvalue="Python.CalendarAdapter" />
+      <item index="4" class="java.lang.String" itemvalue="Python.CustomizerAdapter" />
+      <item index="5" class="java.lang.String" itemvalue="Python.whuchdefault" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500">
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
     <option name="mySSHConnectionTimeout" value="30000" />
@@ -566,27 +574,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1063" height="1080" extended-state="0" />
+    <frame x="0" y="0" width="927" height="1080" extended-state="0" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3286334" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982844" sideWeight="0.7468085" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33549783" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3409091" sideWeight="0.99517906" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25454545" sideWeight="0.38636363" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.99558496" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26948053" sideWeight="0.99561405" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15918654" sideWeight="0.22294372" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23323323" sideWeight="0.60064936" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3560606" sideWeight="0.9924179" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39935064" sideWeight="0.9985945" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26071844" sideWeight="0.6713666" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3409091" sideWeight="0.99517906" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25454545" sideWeight="0.38636363" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3557484" sideWeight="0.9924179" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.99558496" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39935064" sideWeight="0.9985945" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -622,8 +630,11 @@
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
+    <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
+    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="项目重构 - 重构了自定义课程，使得自定义课程可以用于更多学校" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复了一些import bug" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -657,122 +668,105 @@
     <MESSAGE value="增加了verbose回显" />
     <MESSAGE value="项目重构 - 使得Google日历能够应用于更多的学校，具体请查看doc下的相关文档" />
     <MESSAGE value="项目重构 - 重构了自定义课程，使得自定义课程可以用于更多学校" />
+    <MESSAGE value="一些import bug" />
+    <MESSAGE value="修复了一些import bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mod/google_calendar_proxy.py">
+    <entry file="file://$PROJECT_DIR$/const/dict_keys.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="4" selection-start="4083" selection-end="4083" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="16" column="19" selection-start="373" selection-end="373" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/schools/whu/whu.py">
+    <entry file="file://$PROJECT_DIR$/schools/whu/spiders.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="0" selection-start="1839" selection-end="1839" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mod/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="20" selection-start="2353" selection-end="2353" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/const/constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="17" selection-start="385" selection-end="385" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mod/fuf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="580" selection-end="580" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CONFIG_SAMPLE">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="0" selection-start="764" selection-end="764" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mod/course_related.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#18#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mod/serialize.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="58" selection-start="2099" selection-end="2099" vertical-scroll-proportion="0.5888755">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/schools/whu/parsers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="0" selection-start="3727" selection-end="3727" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#18#27#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="11" column="36" selection-start="357" selection-end="357" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/schools/whu/constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="11" selection-start="1110" selection-end="1110" vertical-scroll-proportion="0.0">
+        <state line="39" column="0" selection-start="1257" selection-end="1257" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mod/course_related.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="13" selection-start="1311" selection-end="1311" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mod/customize_course.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="30" selection-start="1685" selection-end="1685" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mod/fuf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="580" selection-end="580" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mod/google_calendar_proxy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="33" selection-start="2855" selection-end="2855" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/schools/whu/whu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="39" selection-start="2185" selection-end="2185" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mod/header_holder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="0" selection-start="675" selection-end="675" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mod/serialize.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="0" selection-start="1007" selection-end="1007" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/schools/whu/parsers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="31" selection-start="3242" selection-end="3242" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/schools/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/schools/whu/CustomizerAdapter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="235" selection-end="235" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/schools/whu/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="3" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/schools/whu/CalendarAdapter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="1149" selection-end="1149" vertical-scroll-proportion="0.0">
+        <state line="30" column="24" selection-start="1088" selection-end="1088" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#19#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/schools/whu/CustomizerAdapter.py">
+    <entry file="file://$PROJECT_DIR$/schools/whu/TableCreator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="19" selection-start="424" selection-end="424" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="594" selection-end="594" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mod/customize_course.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doc/how_to_expand.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="102" column="24" selection-start="3261" selection-end="3261" vertical-scroll-proportion="0.5151515">
+        <state line="1" column="14" selection-start="32" selection-end="32" vertical-scroll-proportion="0.027881041">
           <folding />
         </state>
       </provider>

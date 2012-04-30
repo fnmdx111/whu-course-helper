@@ -1,9 +1,8 @@
 # encoding: utf-8
 
+import __init__
 import datetime
 from mod.google_calendar_proxy import *
-from const.constants import DAYS_TO_NUMS, info, GMAIL_PROMPT, PASSWORD_PROMPT, ID_PROMPT
-from mod.config import CONFIG_KEY_GMAIL_ACCOUNT, configs, CONFIG_KEY_GMAIL_PWD, CONFIG_KEY_STUDENT_ID
 from mod.fuf import getAccountInfo
 from schools.whu import whu
 from schools.whu.constants import *
