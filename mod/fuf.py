@@ -5,10 +5,12 @@
 """
 import getpass
 from const.constants import switch, info
-from mod.config import CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_CREATE, configs, CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_EXIT
+from mod.config import CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_CREATE, configs, CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_EXIT, CONFIG_KEY_LOAD_COURSES_FROM_WEB
 
 
 def getAccountInfo(variable, prompt, usePwdMode=False):
+    if not configs[CONFIG_KEY_LOAD_COURSES_FROM_WEB]:
+        return variable
     if variable == u'':
         if usePwdMode:
             if switch['dbg']:
