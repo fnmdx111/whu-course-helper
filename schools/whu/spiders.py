@@ -9,7 +9,7 @@ def grabCoursePages(header, pageURL,
                     host=ORIGINAL_HOST):
     info('dbg', 'pageURL=%s' % pageURL)
 
-    req = urllib2.Request(pageURL, {}, header, host)
+    req = urllib2.Request(pageURL, None, header, host)
     info('info', 'retrieving course data of url %s' % pageURL)
     response = urllib2.urlopen(req)
 
