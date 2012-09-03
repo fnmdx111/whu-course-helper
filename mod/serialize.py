@@ -26,7 +26,9 @@ def serializeCourses(courses, f):
 
 
 def deserializeMyCourses(f):
-    courses_dicts = json.load(f)
+    f_content = ''.join(f.read().split())
+    print f_content
+    courses_dicts = {}
 
     courses = []
     for item in courses_dicts:
