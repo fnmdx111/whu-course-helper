@@ -21,7 +21,7 @@ CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_CREATE = u'IfSerial
 CONFIG_KEY_FILTER_COURSE_BY_COURSE_NAME = u'FilterCourseByCourseName'
 CONFIG_KEY_FILTER_COURSE_BY_TEACHER_NAME = u'FilterCourseByTeacherName'
 
-
+# these values are default values in case there isn't corresponding value in the `CONFIG' file
 configs = {
     CONFIG_KEY_STUDENT_ID: u'',
     CONFIG_KEY_STUDENT_PWD: u'',
