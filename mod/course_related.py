@@ -102,7 +102,7 @@ Major: {major}
 Available Operation(s): {operation}
 Remarks: {remarks}
 Schedules are\n'''.format(**self.getProperties())\
-        + u'\n'.join([item.__unicode__() for item in self])
+        + u'\n'.join([item.__unicode__() if item else u'' for item in self])
 
 
 

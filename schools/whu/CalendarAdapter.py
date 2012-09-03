@@ -22,6 +22,9 @@ class WhuGoogleCalendarAdapter(object):
             consumedSchedules = []
 
             for schedule in course:
+                if not schedule:
+                    continue
+
                 actualDate = self.getActualDate(int(schedule[STARTING_WEEK]), schedule[DAY])
 
                 d = {
