@@ -160,5 +160,4 @@ def main(courseCreatorParam, courseGrabberParam):
             except WrongCaptchaError:
                 info('err', 'wrong captcha')
 
-    return None
 
