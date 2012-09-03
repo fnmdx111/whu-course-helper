@@ -63,9 +63,9 @@ def myCoursesParser(rawCourseData):
 #                course.setProperty(key, None)
                 del course.getProperties()[key]
 
-        #special case for major
+        # special case for major
         _validatePropertyContent(course.getProperties(), MAJOR)
-        #special case for remarks
+        # special case for remarks
         _validatePropertyContent(course.getProperties(), REMARKS)
 
         courseData.append(course)
@@ -88,9 +88,9 @@ PATTERN = re.compile(ur'^.*'
                      ur'每(?P<%s>\d+)周'
                      ur'\s*;\s*'
                      ur'(?P<%s>\d{1,2})\D+(?P<%s>\d{1,2})节'
-                     ur'\s*,s*'
+                     ur'(?:\s*,s*)?'
                      ur'(?:(?P<%s>\d+)区)?'
-                     ur'\s*,\s*'
+                     ur'(?:\s*,\s*)?'
                      ur'(?:(?P<%s>.+))?$' % KEYS_FOR_RE)
 pattern1 = re.compile(ur'^(\d+)$')
 pattern2 = re.compile(ur'^([^\-]+)\s*\-\s*([A-Za-z0-9]+)$')
@@ -106,7 +106,7 @@ def scheduleParser(self, day, rawData):
 
         if not self[CLASSROOM]:
             self[BUILDING] = None
-            return
+            return self
 
 
         matches1 = pattern1.search(matches.groupdict().get(CLASSROOM, ''))
@@ -118,3 +118,10 @@ def scheduleParser(self, day, rawData):
             self[CLASSROOM] = matches2.group(2)
 
     return self
+
+
+if __name__ == '__main__':
+    match = PATTERN.search(u'6-18周,每1周; 3-4节')
+    if match:
+        print match.groups()
+
