@@ -1,13 +1,13 @@
 # encoding: utf-8
 
-
-import atom
-
-import gdata
 from const.constants import *
 from mod.config import *
 import gdata.calendar
 import gdata.calendar.client
+import gdata.client
+import gdata.calendar.data
+import atom.data
+import gdata.data
 
 
 class GoogleCalendarProxy(object):
