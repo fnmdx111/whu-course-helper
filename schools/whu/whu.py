@@ -77,7 +77,7 @@ def loadCoursesFromWeb(studentID, password):
 
     captcha = getCaptchaPic(header)
 
-    with open('captcha.jpg', 'wb') as f:
+    with open('.\captcha.jpg', 'wb') as f:
         f.write(captcha)
         info('info', 'captcha saved at %s' % f.name)
         # captcha recognition will be implemented in future versions
