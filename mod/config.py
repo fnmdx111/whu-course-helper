@@ -1,4 +1,5 @@
 # encoding: utf-8
+import os
 
 import sys
 from const.constants import info
@@ -51,8 +52,11 @@ FileEncoding = 'utf-8'
 
 
 def readConfig():
+    global ConfigRead
+
     try:
         info('info', 'trying to load CONFIG')
+        info('dbg', 'current working directory: %s' % os.getcwd())
         f = unicode(open('CONFIG', 'r').read(), FileEncoding)
 
         for line in f.split(u'\n'):
@@ -74,7 +78,4 @@ def readConfig():
         else:
             info('err', 'error while loading CONFIG')
             return
-
-
-readConfig()
 
