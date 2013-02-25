@@ -112,5 +112,4 @@
 
 e-mail: chsc4698@gmail.com
 
-all rights reserved
 
