@@ -1,6 +1,6 @@
 ## 帮助使用whu选课网站的本地脚本 ##
 
-目前版本支持导出你的课程，生成一个html的课表，并且可以同步到你的Google日历。
+目前版本支持导出你的课程，并同步到你的Google日历。
 
 本项目目前在GPL许可证下发布，你可以在<http://www.gnu.org/copyleft/gpl.html>找到一个该许可证的副本。
 
@@ -20,17 +20,19 @@
 
 #### 依赖的库 ####
 
-*   2012/9/3T14:14
+* gdata更新为2.0.17
 
-	gdata更新为2.0.17
+* requests 1.2.3
 
-*   earlier
-
-	BeautifulSoup3.2 许可证为Simplified BSD License
-	
-	gdata-2.0.16 许可证为Apache License 2.0
+* pyquery 1.2.4
 
 #### 日志 ####
+
+*   2013/8/22T1612 - 0.0.10
+
+    重构了代码，将Beautiful Soup替换为PyQuery，引入了requests，
+    删除了不需要的功能，只保留了解析课表并同步到Google日历的功能
+    TODO 添加对武大新版课表页面的支持
 
 *   2012/9/6T15:06 - 0.0.9a
 

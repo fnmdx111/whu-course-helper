@@ -1,84 +1,42 @@
 # encoding: utf-8
 import re
 from const.dict_keys import *
-from mod.course_related import CourseSchedule, PublicCourse, MyCourse
+from mod.course_related import CourseSchedule, MyCourse
 
-def _validatePropertyContent(d, key, illegal=u'&nbsp;', legal=u'n/a'):
-    if d[key] == illegal:
-        d[key] = legal
+from pyquery import PyQuery as pq
 
 
-def publicCoursesParser(rawCourseData):
-    # the first 3 <tr> actually do not contain course data
-    rawCourseData = rawCourseData[2:]
+def my_course_parser(pq_course_data):
+    courses = []
 
-    courseData = []
-    for tr in rawCourseData:
-        properties = {}
-        for propertyCount, td in enumerate(tr.findAll('td')):
-            content = td.contents[1 if propertyCount == 3 else 0] # special case for student_capacity
-            if content:
-                content = content.lstrip().rstrip()
-            properties[PublicCourse.KEYS[propertyCount]] = content
+    def process_td(idx, elem):
+        return MyCourse.KEYS[idx], pq(elem).text()
 
-        course = PublicCourse(properties)
-
-        # special case for days
-        for key in PublicCourse.KEYS[8:15]:
-            if course.getProperty(key) != u'&nbsp;':
-                course.getProperties()[key] = ''.join(course.getProperties()[key].split('\n'))
-                course.append(scheduleParser(CourseSchedule(), key, course.getProperty(key)))
-            else:
-#                course.setProperty(key, None)
-                del course.getProperties()[key]
-
-        #special case for textbooks
-        _validatePropertyContent(course.getProperties(), TEXT_BOOK)
-        #special case for remarks
-        _validatePropertyContent(course.getProperties(), REMARKS)
-
-        courseData.append(course)
-
-    return courseData
-
-
-def myCoursesParser(rawCourseData):
-    courseData = []
-    for tr in rawCourseData:
-        properties = {}
-        for propertyCount, td in enumerate(tr.findAll('td')):
-            content = td.contents[0]
-            if content:
-                content = content.lstrip().rstrip()
-            properties[MyCourse.KEYS[propertyCount]] = content
-
+    for elem in pq_course_data:
+        properties = {key: val if val else 'n/a'
+                      for key, val in pq(elem).find('td').map(process_td)}
         course = MyCourse(properties)
 
-        # special case for days
         for key in MyCourse.KEYS[13:20]:
-            if course.getProperty(key) != u'&nbsp;':
-                course.getProperties()[key] = ''.join(course.getProperties()[key].split('\n'))
-                course.append(scheduleParser(CourseSchedule(), key, course.getProperty(key)))
+            val = course.property(key)
+            if val:
+                course.set_property(key, ''.join(val.split('\n\r')))
+                course.append(schedule_parser(CourseSchedule(),
+                                              key, val))
             else:
-#                course.setProperty(key, None)
-                del course.getProperties()[key]
+                del course.properties()[key]
 
-        # special case for major
-        _validatePropertyContent(course.getProperties(), MAJOR)
-        # special case for remarks
-        _validatePropertyContent(course.getProperties(), REMARKS)
+        courses.append(course)
 
-        courseData.append(course)
-
-    return courseData
+    return courses
 
 
-def genLocationByCourseSchedule(schedule):
-    classroomAndBuilding = schedule[BUILDING]
+def gen_location_by_schedule(schedule):
+    location = schedule[BUILDING]
     if schedule[BUILDING] != schedule[CLASSROOM]:
-        classroomAndBuilding += u'-%s' % schedule[CLASSROOM]
+        location += '-%s' % schedule[CLASSROOM]
 
-    return classroomAndBuilding
+    return location
 
 
 KEYS_FOR_RE = CourseSchedule.KEYS[1:len(CourseSchedule.KEYS) - 1]
@@ -95,8 +53,8 @@ PATTERN = re.compile(ur'^.*'
 pattern1 = re.compile(ur'^(\d+)$')
 pattern2 = re.compile(ur'^([^\-]+)\s*\-\s*([A-Za-z0-9]+)$')
 pattern3 = re.compile(ur'^(.+?)(\d+)$')
-def scheduleParser(self, day, rawData):
-    matches = PATTERN.search(rawData)
+def schedule_parser(self, day, raw):
+    matches = PATTERN.search(raw)
 
     self[DAY] = day
 
@@ -124,4 +82,5 @@ if __name__ == '__main__':
     match = PATTERN.search(u'6-18周,每1周; 3-4节')
     if match:
         print match.groups()
+
 

@@ -13,14 +13,6 @@ CONFIG_KEY_THIS_CALENDAR_TITLE = u'ThisCalendarTitle'
 CONFIG_KEY_THIS_CALENDAR_COLOR = u'ThisCalendarColor'
 CONFIG_KEY_THIS_CALENDAR_SUMMARY = u'ThisCalendarSummary'
 CONFIG_KEY_IF_THIS_CALENDAR_FOUND_THEN_PERFORM_DELETE = u'IfThisCalendarFoundThenPerformDelete'
-CONFIG_KEY_SKIP_OPTIONAL_FIELDS = u'SkipOptionalFields'
-CONFIG_KEY_LOAD_COURSES_FROM_WEB = u'LoadCoursesFromWeb'
-CONFIG_KEY_LOAD_COURSES_FROM_FILE = u'LoadCoursesFromFile'
-CONFIG_KEY_SERIALIZED_COURSES_PATH = u'SerializedCoursesPath'
-CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_EXIT = u'IfSerializedCoursesPathNotFoundThenPerformExit'
-CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_CREATE = u'IfSerializedCoursesPathNotFoundThenPerformCreate'
-CONFIG_KEY_FILTER_COURSE_BY_COURSE_NAME = u'FilterCourseByCourseName'
-CONFIG_KEY_FILTER_COURSE_BY_TEACHER_NAME = u'FilterCourseByTeacherName'
 
 # these values are default values in case there isn't corresponding value in the `CONFIG' file
 configs = {
@@ -32,32 +24,15 @@ configs = {
     CONFIG_KEY_THIS_CALENDAR_COLOR: u'#2952A3',
     CONFIG_KEY_THIS_CALENDAR_SUMMARY: u'created by whu-course-helper',
     CONFIG_KEY_IF_THIS_CALENDAR_FOUND_THEN_PERFORM_DELETE: True,
-    CONFIG_KEY_SKIP_OPTIONAL_FIELDS: False,
-    CONFIG_KEY_LOAD_COURSES_FROM_WEB: True,
-    CONFIG_KEY_LOAD_COURSES_FROM_FILE: False,
-    CONFIG_KEY_SERIALIZED_COURSES_PATH: u'serialized_courses.txt',
-    CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_EXIT: False,
-    CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_CREATE: True,
-    CONFIG_KEY_FILTER_COURSE_BY_COURSE_NAME: True,
-    CONFIG_KEY_FILTER_COURSE_BY_TEACHER_NAME: True
 }
 
-# note that if you are using linux or any other modern ide which supports unicode,
-# please set the following variable to 'utf-8'
-# warning: don't modify this if you don't know what you're doing!
-ConsoleEncoding = sys.stdout.encoding
-
-# warning: don't modify this if you don't know what you're doing!
-FileEncoding = 'utf-8'
-
-
-def readConfig():
+def read_configs():
     global ConfigRead
 
     try:
         info('info', 'trying to load CONFIG')
         info('dbg', 'current working directory: %s' % os.getcwd())
-        f = unicode(open('CONFIG', 'r').read(), FileEncoding)
+        f = unicode(open('CONFIG', 'r').read(), 'utf-8')
 
         for line in f.split(u'\n'):
             if line.startswith(u'#'):
@@ -78,4 +53,5 @@ def readConfig():
         else:
             info('err', 'error while loading CONFIG')
             return
+
 

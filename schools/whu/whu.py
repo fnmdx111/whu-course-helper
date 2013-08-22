@@ -1,130 +1,78 @@
 # encoding: utf-8
 
-from BeautifulSoup import BeautifulSoup
-import urllib
-import urllib2
+from pyquery import PyQuery as pq
+import requests
 from mod.exceptions import InvalidIDOrPasswordError, WrongCaptchaError
-from mod.fuf import eliminateRepeatingCourses, openTxt
-from mod.header_holder import HeaderHolder
+from mod.fuf import info, verbose
 from schools.whu.constants import *
-from schools.whu.parsers import myCoursesParser
-from schools.whu.spiders import getCaptchaPic, grabCoursePages
-from mod.serialize import deserializeMyCourses
-from mod.config import *
+from schools.whu.parsers import my_course_parser
+from schools.whu.spiders import get_captcha, grab_courses
 
 
-def login(studentID, password, captcha, header,
-          identification='student',
-          loginURL=LOGIN_URL,
-          host=ORIGINAL_HOST):
-    values = {
-        'who': identification,
-        'id': studentID,
-        'pwd': password,
-        'yzm': captcha,
-        'submit': '%C8%B7 %B6%A8' # wtf??
-    }
+def login(session,
+          student_id, password, captcha, identification='student'):
 
-    postData = urllib.urlencode(values)
+    response = session.post(LOGIN_URL,
+                            data={'who': identification,
+                                  'id': student_id,
+                                  'pwd': password,
+                                  'yzm': captcha,
+                                  'submit': '%C8%B7 %B6%A8'})
+    info('retrieving main page')
 
-    req = urllib2.Request(loginURL, postData, header, host)
-    info('info', 'retrieving main page')
-    response = urllib2.urlopen(req)
+    d = pq(response.text)
 
-    studentNameAttrs = {
-        'class': 'line',
-        'height': '20',
-        'width': '70%'
-    }
-    dateAttrs = {
-        'height': '30',
-        'colspan': '6',
-        'align': 'center',
-        'valign': 'middle'
-    }
-    semesterAttrs = {
-        'height': '20',
-        'colspan': '3',
-        'class': 'line',
-        'width': '90%'
-    }
-    wrongParamAttrs = {
-        'height': '25',
-        'width': '401'
-    }
-    def _parseElement(soup, name, attrs):
-        element = soup.find(name, attrs)
-
-        if element:
-            return element.contents[0].lstrip().rstrip()
-
-    soup = BeautifulSoup(response.read())
-
-    msg = _parseElement(soup, 'td', wrongParamAttrs)
+    msg = d('td[height="25"][width="401"]').text()
     if msg:
         if WRONG_CAPTCHA_TRAIT in msg:
             raise WrongCaptchaError
         elif INVALID_ID_OR_PASSWORD_TRAIT in msg:
             raise InvalidIDOrPasswordError
 
-    return _parseElement(soup, 'td', studentNameAttrs),\
-           _parseElement(soup, 'td', dateAttrs),\
-           _parseElement(soup.find(name='td', attrs=semesterAttrs), 'b', {})
+    selectors = ('td.line[height="20"][width="70%"]',
+                 'td[height="30"][colspan="6"][align="center"]',
+                 'td.line[height="20"][colspan="3"]')
+    return map(lambda selector: d(selector).text(),
+               selectors)
 
 
-def loadCoursesFromWeb(studentID, password):
-    header = HeaderHolder(studentID)
+def load_courses(student_id, password):
+    session = requests.Session()
 
-    captcha = getCaptchaPic(header)
+    captcha = get_captcha(session)
 
     with open('.\captcha.jpg', 'wb') as f:
         f.write(captcha)
-        info('info', 'captcha saved at %s' % f.name)
+        info('captcha saved at %s' % f.name)
         # captcha recognition will be implemented in future versions
 
-    captchaContent = raw_input('captcha? ')
+    captcha = raw_input('captcha? ')
 
-    studentName, date, semester = login(studentID, password, captchaContent, header)
-    if studentName:
-        info('info', ('welcome, ' + u'%s %s %s' % (studentName, date, semester)).encode(ConsoleEncoding))
+    student_name, date, semester = login(session,
+                                         student_id, password, captcha)
+    if student_name:
+        info('welcome %s %s %s' % (student_name, date, semester))
     else:
-        info('info', 'strange, nothing was transmitted, perhaps wrong password or captcha?')
+        info('strange, nothing was transmitted,'
+             'perhaps wrong password or captcha?')
 
-    return studentName, grabCoursePages(header, MY_COURSES_URL, parser=myCoursesParser)
+    return student_name, grab_courses(session,
+                                      parser=my_course_parser)
 
 
-def readCourses(studentID, password,
-                path=configs[CONFIG_KEY_SERIALIZED_COURSES_PATH],
-                LoadCoursesFromWeb=configs[CONFIG_KEY_LOAD_COURSES_FROM_WEB],
-                LoadCoursesFromFile=configs[CONFIG_KEY_LOAD_COURSES_FROM_FILE]):
-    courses = []
-    studentName = studentID
-    if LoadCoursesFromWeb:
-        studentName, coursesFromWeb = loadCoursesFromWeb(studentID, password)
-        courses += coursesFromWeb
-    if LoadCoursesFromFile:
-        try:
-            courses += deserializeMyCourses(openTxt(path))
-            courses = eliminateRepeatingCourses(courses)
-        except IOError as err:
-            if err.errno == 2:
-                info('err', '%s not found, skipping loading courses from file' % configs[CONFIG_KEY_SERIALIZED_COURSES_PATH])
-                if configs[CONFIG_KEY_IF_SERIALIZED_COURSES_PATH_NOT_FOUND_THEN_PERFORM_EXIT]:
-                    exit(0)
+def read_courses(studentID, password):
+    student_name, courses = load_courses(studentID, password)
 
     for item in courses:
-        info('verbose', item.__unicode__().encode(ConsoleEncoding))
+        verbose(item)
 
-    return studentName, courses
+    return student_name, courses
 
 
-def logout(header,
-           logoutURL=LOGOUT_URL,
-           host=ORIGINAL_HOST):
-    req = urllib2.Request(logoutURL, {}, header, host)
-    info('info', 'logging out')
-    response = urllib2.urlopen(req)
+def logout(session):
+    response = session.post(LOGOUT_URL)
+    info('logging out')
 
-    if LOGOUT_TRAIT in response.read():
-        info('info', 'logout succeeded')
+    if LOGOUT_TRAIT in response.text:
+        info('logout succeeded')
 

@@ -10,21 +10,21 @@ class Course(list):
 
         if not properties:
             return
-        self.setProperties(properties)
+        self.set_properties(properties)
 
-    def setProperty(self, key, data):
+    def set_property(self, key, data):
         self._properties[key] = data
 
-    def setProperties(self, properties):
+    def set_properties(self, properties):
         self._properties = {}
         for key in properties:
             self._properties[key] = properties[key]
 
-    def getProperty(self, key):
+    def property(self, key):
         if key in self._properties:
             return self._properties[key]
 
-    def getProperties(self):
+    def properties(self):
         return self._properties
 
     @abstractmethod
@@ -37,38 +37,12 @@ class Course(list):
     def __eq__(self, other):
         if not isinstance(other, Course):
             return False
-        if self.getProperty(COURSE_NAME) == other.getProperty(COURSE_NAME):
-            if self.getProperty(TEACHER_NAME) == other.getProperty(TEACHER_NAME):
+        if self.property(COURSE_NAME) == other.property(COURSE_NAME):
+            if self.property(TEACHER_NAME) == other.property(TEACHER_NAME):
                 return True
 
         return False
 
-
-class PublicCourse(Course):
-
-    KEYS = (
-        COURSE_NAME,
-        TYPE,
-        CREDIT,
-        STUDENT_CAPACITY,
-        TEACHER_NAME,
-        TEACHER_TITLE,
-        SCHOOL,
-        PERIOD,
-        MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY,
-        REMARKS,
-        TEXT_BOOK,
-        YEAR,
-        SEMESTER
-    )
-
-    def __unicode__(self):
-        return u'''Course: {course_name} by {teacher_title} {teacher_name} at {school} within {period} class hour(s) of {year} {semester}
-Credit: {credit}
-Textbook: {text_book}
-Remarks: {remarks}
-Schedules are\n'''.format(**self.getProperties())\
-        + u'\n'.join([item.__unicode__() for item in self])
 
 class MyCourse(Course):
 
@@ -101,7 +75,7 @@ Course Number: {course_number}
 Major: {major}
 Available Operation(s): {operation}
 Remarks: {remarks}
-Schedules are\n'''.format(**self.getProperties())\
+Schedules are\n'''.format(**self.properties())\
         + u'\n'.join([item.__unicode__() if item else u'' for item in self])
 
 
@@ -122,7 +96,7 @@ class CourseSchedule(dict):
 
 
     def __init__(self, fromDict=None):
-        dict.__init__(self)
+        super(CourseSchedule, self).__init__()
 
         if fromDict:
             self._fromDict(fromDict)

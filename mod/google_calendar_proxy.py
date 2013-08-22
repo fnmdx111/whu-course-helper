@@ -8,48 +8,65 @@ import gdata.client
 import gdata.calendar.data
 import atom.data
 import gdata.data
+from mod.fuf import get_account_info, info, dbg, err
 
 
 class GoogleCalendarProxy(object):
 
     app_source = u'czh-WhuCourseHelper-%s' % VERSION
 
-    def __init__(self, gmail_account, gmail_pwd, calendar_timezone, calendar_location):
-        self.calendarClient = gdata.calendar.client.CalendarClient(source=GoogleCalendarProxy.app_source)
-        try:
-            info('info', 'logging in as %s' % gmail_account)
-            self.calendarClient.ClientLogin(gmail_account, gmail_pwd, self.calendarClient.source)
+    def __init__(self, calendar_timezone, calendar_location):
+        gmail_account = get_account_info(configs[CONFIG_KEY_GMAIL_ACCOUNT],
+                                         GMAIL_PROMPT)
+        gmail_pwd = get_account_info(configs[CONFIG_KEY_GMAIL_PWD],
+                                     PASSWORD_PROMPT,
+                                     True)
 
-            for calendar in self.calendarClient.GetOwnCalendarsFeed().entry:
-                if calendar.summary and calendar.summary.text == configs[CONFIG_KEY_THIS_CALENDAR_SUMMARY]:
+        self.client = gdata.calendar.client.CalendarClient(
+            source=GoogleCalendarProxy.app_source
+        )
+
+        try:
+            info('logging in as %s' % gmail_account)
+            self.client.ClientLogin(gmail_account, gmail_pwd,
+                                    self.client.source)
+
+            for calendar in self.client.GetOwnCalendarsFeed().entry:
+                if calendar.summary and\
+                   calendar.summary.text == configs[CONFIG_KEY_THIS_CALENDAR_SUMMARY]:
                     if configs[CONFIG_KEY_IF_THIS_CALENDAR_FOUND_THEN_PERFORM_DELETE]:
-                        info('info', 'previously created calendar %s found, deleting' % calendar.title.text)
-                        self.calendarClient.Delete(calendar.GetEditLink().href)
-                        self.currentCalendar = self.calendarClient.InsertCalendar(new_calendar=self.genNewCalendar(
-                            configs[CONFIG_KEY_THIS_CALENDAR_TITLE],
-                            configs[CONFIG_KEY_THIS_CALENDAR_SUMMARY],
-                            configs[CONFIG_KEY_THIS_CALENDAR_COLOR],
-                            calendar_timezone,
-                            calendar_location
-                        ))
+                        info('previously created calendar %s found,'
+                             'deleting' % calendar.title.text)
+                        self.client.Delete(calendar.GetEditLink().href)
+                        self.current_calendar = self.client.InsertCalendar(
+                            new_calendar=self.gen_calender(
+                                configs[CONFIG_KEY_THIS_CALENDAR_TITLE],
+                                configs[CONFIG_KEY_THIS_CALENDAR_SUMMARY],
+                                configs[CONFIG_KEY_THIS_CALENDAR_COLOR],
+                                calendar_timezone,
+                                calendar_location
+                            )
+                        )
                     else:
-                        self.currentCalendar = calendar
+                        self.current_calendar = calendar
                     break
             else:
-                self.currentCalendar = self.calendarClient.InsertCalendar(new_calendar=self.genNewCalendar(
-                    configs[CONFIG_KEY_THIS_CALENDAR_TITLE],
-                    configs[CONFIG_KEY_THIS_CALENDAR_SUMMARY],
-                    configs[CONFIG_KEY_THIS_CALENDAR_COLOR],
-                    calendar_timezone,
-                    calendar_location
-                ))
-            info('dbg', 'calendar id = %s' % self.currentCalendar.content.src)
+                self.current_calendar = self.client.InsertCalendar(
+                    new_calendar=self.gen_calender(
+                        configs[CONFIG_KEY_THIS_CALENDAR_TITLE],
+                        configs[CONFIG_KEY_THIS_CALENDAR_SUMMARY],
+                        configs[CONFIG_KEY_THIS_CALENDAR_COLOR],
+                        calendar_timezone,
+                        calendar_location
+                    )
+                )
+            dbg('calendar id = %s' % self.current_calendar.content.src)
 
-        except gdata.client.RequestError as err:
-            info('err', err)
+        except gdata.client.RequestError as e:
+            err(e)
             return
 
-    def genNewCalendar(self, title, summary, color, timezone, location):
+    def gen_calender(self, title, summary, color, timezone, location):
         new_calendar = gdata.calendar.data.CalendarEntry()
         new_calendar.title = atom.data.Title(text=title)
         new_calendar.summary = atom.data.Summary(text=summary)
@@ -61,7 +78,7 @@ class GoogleCalendarProxy(object):
         return new_calendar
 
 
-    def insertCourse(self, schedules, title, content, echo=True):
+    def insert(self, schedules, title, content, echo=True):
         for schedule in schedules:
             event = gdata.calendar.data.CalendarEventEntry()
 
@@ -69,11 +86,14 @@ class GoogleCalendarProxy(object):
             event.content = atom.data.Content(text=content)
             event.where.append(gdata.data.Where(value=schedule[WHERE]))
 
-            event.recurrence = gdata.data.Recurrence(text=CourseRecurrence(schedule).recurrenceData)
+            event.recurrence = gdata.data.Recurrence(
+                text=CourseRecurrence(schedule).recurrence_text
+            )
 
             if echo:
-                info('info', u'inserting %s %s at %s' % (title, content, event.where[0].value))
-            self.calendarClient.InsertEvent(event, self.currentCalendar.content.src)
+                info('inserting %s %s at %s' % (title, content,
+                                                event.where[0].value))
+            self.client.InsertEvent(event, self.current_calendar.content.src)
 
 
 class CourseRecurrence(object):
@@ -118,11 +138,11 @@ class CourseRecurrence(object):
             u'freq': schedule[FREQUENCY],
             u'byday': schedule[BYDAY]
         }
-        self.recurrenceData = CourseRecurrence.PATTERN.format(**data)
+        self.recurrence_text = CourseRecurrence.PATTERN.format(**data)
 
 
     def __unicode__(self):
-        return self.recurrenceData
+        return self.recurrence_text
 
 
     def __str__(self):

@@ -1,55 +1,29 @@
-from BeautifulSoup import BeautifulSoup
-import urllib2
-from mod.fuf import info
+from pyquery import PyQuery as pq
+from mod.fuf import info, dbg
 from schools.whu.constants import *
-from schools.whu.parsers import publicCoursesParser
 
-def grabCoursePages(header, pageURL,
-                    parser=None,
-                    host=ORIGINAL_HOST):
-    info('dbg', 'pageURL=%s' % pageURL)
+def grab_courses(session,
+                 page_url=MY_COURSES_URL,
+                 parser=None):
+    dbg('pageURL=%s' % page_url)
 
-    req = urllib2.Request(pageURL, None, header, host)
-    info('info', 'retrieving course data of url %s' % pageURL)
-    response = urllib2.urlopen(req)
+    info('retrieving course data of url %s' % page_url)
+    response = session.get(page_url)
 
-    soup = BeautifulSoup(response.read())
-    rawCourseData = soup.findAll(
-        name='tr',
-        attrs={
-            'align': 'center',
-            'class': 'TR_BODY'
-        }
-    )
+    d = pq(response.text)
+    pq_course_data = d('tr.TR_BODY[align="center"]')
     if parser:
-        return parser(rawCourseData)
+        return parser(pq_course_data)
     else:
-        return rawCourseData
+        return pq_course_data
 
 
-def getCaptchaPic(header,
-                  captchaURL=CAPTCHA_URL,
-                  host=ORIGINAL_HOST):
+def get_captcha(session):
+    response = session.get(CAPTCHA_URL)
 
-    req = urllib2.Request(
-        url=captchaURL,
-        headers=header,
-        origin_req_host=host)
+    info('retrieving captcha')
+    img_data = response.content
 
-    info('info', 'retrieving captcha')
-    imgdata = urllib2.urlopen(req)
-
-    return imgdata.read()
+    return img_data
 
 
-def grabAllPublicCoursePages(header):
-    allPublicCourses = []
-    for i in range(1,11):
-        info('info', 'retrieving course data of page %s' % i)
-        data = grabCoursePages(header, PUBLIC_COURSES_LIST_URL % (ORIGINAL_HOST, i), publicCoursesParser)
-        for item in data:
-            info('verbose', item)
-            allPublicCourses.append(item)
-    info('info', 'grabbing completed, %s courses caught' % len(allPublicCourses))
-
-    return allPublicCourses

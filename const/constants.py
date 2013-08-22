@@ -9,18 +9,6 @@ department = u'school of computer, whu'
 
 VERSION = u'0.0.8'
 
-switch = {
-    'info': True,
-    'dbg': True,
-    'err': True,
-    'verbose': True
-}
-
-
-def info(channel, msg):
-    if switch[channel]:
-        print '%s: %s' % (channel, msg)
-
 
 PASSWORD_PROMPT = 'pwd? '
 ID_PROMPT = 'id? '
