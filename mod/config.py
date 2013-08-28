@@ -1,8 +1,6 @@
 # encoding: utf-8
 import os
-
-import sys
-from const.constants import info
+from mod.fuf import info, err, dbg
 
 
 CONFIG_KEY_STUDENT_ID = u'StudentID'
@@ -30,8 +28,8 @@ def read_configs():
     global ConfigRead
 
     try:
-        info('info', 'trying to load CONFIG')
-        info('dbg', 'current working directory: %s' % os.getcwd())
+        dbg('trying to load CONFIG')
+        dbg('current working directory: %s' % os.getcwd())
         f = unicode(open('CONFIG', 'r').read(), 'utf-8')
 
         for line in f.split(u'\n'):
@@ -41,17 +39,17 @@ def read_configs():
             if u'=' in line:
                 l = [s.strip() for s in line.split(u'=')]
                 if l[0] in configs:
-                    info('dbg', 'config %s found, value=%s' % (l[0], eval(l[1])))
+                    dbg('config %s found, value=%s' % (l[0], eval(l[1])))
                     configs[l[0]] = eval(l[1])
                 else:
-                    info('err', 'unrecognized config parameter %s' % l[0])
+                    err('unrecognized config parameter %s' % l[0])
 
-    except IOError as err:
-        if err.errno == 2:
-            info('info', 'CONFIG not found, using default config')
+    except IOError as e:
+        if e.errno == 2:
+            dbg('CONFIG not found, using default config')
             return
         else:
-            info('err', 'error while loading CONFIG')
+            err('error while loading CONFIG')
             return
 
 

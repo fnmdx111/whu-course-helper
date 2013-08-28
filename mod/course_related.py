@@ -1,6 +1,7 @@
 # encoding: utf-8
 from abc import abstractmethod
 from const.dict_keys import *
+import sys
 
 
 class Course(list):
@@ -79,6 +80,10 @@ Schedules are\n'''.format(**self.properties())\
         + u'\n'.join([item.__unicode__() if item else u'' for item in self])
 
 
+    def __str__(self):
+        return unicode(self).encode(sys.getfilesystemencoding())
+
+
 
 class CourseSchedule(dict):
 
@@ -124,6 +129,6 @@ class CourseSchedule(dict):
             return s + u'%s-%s' % (building, classroom)
 
     def __str__(self):
-        return self.__unicode__().encode('utf-8')
+        return self.__unicode__().encode(sys.getdefaultencoding())
 
 

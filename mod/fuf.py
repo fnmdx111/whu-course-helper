@@ -21,7 +21,7 @@ def get_account_info(variable, prompt, pwd=False):
 
 switch = {
     'info': True,
-    'dbg': True,
+    'dbg': False,
     'err': True,
     'verbose': True
 }

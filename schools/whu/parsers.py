@@ -13,7 +13,7 @@ def my_course_parser(pq_course_data):
         return MyCourse.KEYS[idx], pq(elem).text()
 
     for elem in pq_course_data:
-        properties = {key: val if val else 'n/a'
+        properties = {key: val if val else ''
                       for key, val in pq(elem).find('td').map(process_td)}
         course = MyCourse(properties)
 
@@ -65,7 +65,6 @@ def schedule_parser(self, day, raw):
         if not self[CLASSROOM]:
             self[BUILDING] = None
             return self
-
 
         matches1 = pattern1.search(matches.groupdict().get(CLASSROOM, ''))
         matches2 = pattern2.search(matches.groupdict()[CLASSROOM]) or pattern3.search(matches.groupdict()[CLASSROOM])
