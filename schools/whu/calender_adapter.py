@@ -123,8 +123,7 @@ class WhuGoogleCalendarAdapter(object):
 
             schedule['title'] = u'第' + chs_num + u'周'
             schedule['start_date'] = (start_term + seven_days * (weak - 1)).strftime('%Y-%m-%d')
-            schedule['end_date'] = (start_term + seven_days * weak -
-                                    datetime.timedelta(1)).strftime('%Y-%m-%d')
+            schedule['end_date'] = (start_term + seven_days * weak).strftime('%Y-%m-%d')
             schedules.append(schedule)
 
         return schedules
