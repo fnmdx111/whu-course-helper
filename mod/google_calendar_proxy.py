@@ -95,6 +95,18 @@ class GoogleCalendarProxy(object):
                                                 event.where[0].value))
             self.client.InsertEvent(event, self.current_calendar.content.src)
 
+    def insert_day(self, schedules, echo=True):
+        for schedule in schedules:
+            event = gdata.calendar.data.CalendarEventEntry()
+            event.title = atom.data.Title(text=schedule['title'])
+            event.when.append(gdata.calendar.data.When
+                              (start=schedule['start_date'], end=schedule['end_date']))
+
+            if echo:
+                info('inserting %s at %s to %s' % (schedule['title'],
+                                                   schedule['start_date'], schedule['end_date']))
+            self.client.InsertEvent(event, self.current_calendar.content.src)
+
 
 class CourseRecurrence(object):
     PATTERN = u'DTSTART;TZID=Asia/Shanghai:{dtstart}\n'\
