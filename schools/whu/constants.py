@@ -15,7 +15,7 @@ MY_COURSES_URL = r'http://%s/stu/query_stu_lesson.jsp' % ORIGINAL_HOST
 
 THIS_CALENDAR_TIMEZONE = u'Asia/Shanghai'
 THIS_CALENDAR_LOCATION = u'武汉'
-SEMESTER_STARTING_DATE = (2013, 9, 1)
+SEMESTER_STARTING_DATE = (2014, 2, 16)
 # usually a sunday
 
 
