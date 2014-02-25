@@ -10,8 +10,8 @@ department = u'school of computer, whu'
 VERSION = u'0.0.8'
 
 
-PASSWORD_PROMPT = 'pwd? '
-ID_PROMPT = 'id? '
+PASSWORD_PROMPT = 'Password? '
+ID_PROMPT = 'Student ID? '
 GMAIL_PROMPT = 'gmail? '
 
 DEFAULT_WHUCOURSESHELPER_IDENTIFIER = u'this event was inserted automatically by WhuCoursesHelper'
