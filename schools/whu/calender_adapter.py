@@ -8,8 +8,6 @@ from schools.whu import whu
 from schools.whu.constants import *
 from schools.whu.parsers import gen_location_by_schedule
 
-from chnum import cnumber
-
 
 class WhuGoogleCalendarAdapter(object):
 
@@ -107,23 +105,17 @@ class WhuGoogleCalendarAdapter(object):
 
         return date_time.strftime(pattern)
 
-    def weak_num(self):
+    def week_num(self, num=WEEK_NUMBER):
         schedules = []
 
         start_term = datetime.date(SEMESTER_STARTING_DATE[0], SEMESTER_STARTING_DATE[1],
                                    SEMESTER_STARTING_DATE[2])
         seven_days = datetime.timedelta(7)
-        pt = cnumber()
+        for week in range(1, 21):
+            schedule = {'title': u'第' + num[week] + u'周',
+                        'start_date': (start_term + seven_days * (week - 1)).strftime('%Y-%m-%d'),
+                        'end_date': (start_term + seven_days * week).strftime('%Y-%m-%d')}
 
-        for weak in range(1, 21):
-            schedule = {'title': '', 'start_date': '', 'end_date': ''}
-            chs_num = pt.cwchange(weak)[:-2]
-            if chs_num[:2] == u'一十':
-                chs_num = chs_num[1:]
-
-            schedule['title'] = u'第' + chs_num + u'周'
-            schedule['start_date'] = (start_term + seven_days * (weak - 1)).strftime('%Y-%m-%d')
-            schedule['end_date'] = (start_term + seven_days * weak).strftime('%Y-%m-%d')
             schedules.append(schedule)
 
         return schedules
@@ -136,7 +128,7 @@ class WhuGoogleCalendarAdapter(object):
                 item[COURSE_NAME],
                 item[TEACHER_NAME]
             )
-        self.proxy.insert_day(self.weak_num())
+        self.proxy.insert_day(self.week_num())
 
 
 if __name__ == '__main__':
