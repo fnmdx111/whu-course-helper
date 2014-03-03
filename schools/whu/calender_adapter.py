@@ -105,6 +105,21 @@ class WhuGoogleCalendarAdapter(object):
 
         return date_time.strftime(pattern)
 
+    def week_num(self, num=WEEK_NUMBER):
+        schedules = []
+
+        start_term = datetime.date(SEMESTER_STARTING_DATE[0], SEMESTER_STARTING_DATE[1],
+                                   SEMESTER_STARTING_DATE[2])
+        seven_days = datetime.timedelta(7)
+        for week in range(1, 21):
+            schedule = {'title': u'第' + num[week] + u'周',
+                        'start_date': (start_term + seven_days * (week - 1)).strftime('%Y-%m-%d'),
+                        'end_date': (start_term + seven_days * week).strftime('%Y-%m-%d')}
+
+            schedules.append(schedule)
+
+        return schedules
+
 
     def do_insertion(self):
         for item in self.courses:
@@ -113,6 +128,7 @@ class WhuGoogleCalendarAdapter(object):
                 item[COURSE_NAME],
                 item[TEACHER_NAME]
             )
+        self.proxy.insert_day(self.week_num())
 
 
 if __name__ == '__main__':
